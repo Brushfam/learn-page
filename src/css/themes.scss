@@ -1,0 +1,31 @@
+html[data-theme='light'] {
+  .pagination-nav__link {
+    background: white;
+  }
+
+  .main-wrapper {
+    background: #fafafa;
+  }
+  [class^='codeBlockContainer'] {
+    box-shadow: none;
+    border: 1px solid #ebeef1;
+  }
+
+  .footer {
+    border: 2px solid var(--ifm-toc-border-color);
+  }
+}
+
+html[data-theme='dark'] {
+  .docusaurus-highlight-code-line {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  [class^='codeBlockContainer'] {
+    box-shadow: none;
+  }
+
+  .footer {
+    border: 2px solid var(--ifm-toc-border-color);
+  }
+}
