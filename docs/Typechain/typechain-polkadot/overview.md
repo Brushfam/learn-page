@@ -265,5 +265,5 @@ typechain.loadPluginsFromFiles(
 
 ## Example of plugins usage
 
-You can find an example of plugins usage in the [examples](../../examples) directory.
+You can find an example of plugins usage in the [examples](https://github.com/727-Ventures/typechain-polkadot/tree/master/examples) directory.
 
