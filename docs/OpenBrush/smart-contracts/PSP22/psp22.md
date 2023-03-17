@@ -103,7 +103,7 @@ pub mod my_psp22 {
 
 You can check an example of the usage of [PSP22](https://github.com/727-Ventures/openbrush-contracts/tree/main/examples/psp22).
 
-Also you can use extensions for PSP22 token:
+Also, you can use extensions for PSP22 token:
 
 [PSP22Metadata](/OpenBrush/smart-contracts/psp22/extensions/metadata): metadata for PSP22.
 
