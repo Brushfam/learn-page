@@ -5,7 +5,7 @@ title: Typechain Documentation
 sidebar_label: How to use
 ---
 
-Typechain-Polkadot Documentation
+Typechain Documentation
 ==========================================
 
 ## Packages of Typechain-Polkadot

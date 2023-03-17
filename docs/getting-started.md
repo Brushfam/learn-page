@@ -1,9 +1,11 @@
 ---
 sidebar_position: 1
 slug: /
-title: Learn
+title: Getting started
 sidebar_label: Getting started
 ---
 
-Brushfam onboards businesses into Polkadot by creating the necessary development infrastructure, auditing, and giving advisory to the development teams. With OpenBrush, Sol2ink and our suite of web3 products and services we make it easy to resolve real world problems using Polkadot tech.
+Brushfam's goal is to onboard businesses to Polkadot WASM by creating the necessary infrastructure, auditing, and giving advisory to the development teams.
+This documentation page contains materials about [ink!](https://use.ink/) ecosystem trusted and everyday-used tools.
+
 

@@ -2,7 +2,7 @@
 sidebar_position: 1
 slug: /Sol2ink
 title: Sol2ink Documentation
-sidebar_label: Sol2ink overview
+sidebar_label: Overview
 ---
 
 # Sol2Ink Documentation
