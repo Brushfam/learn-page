@@ -5,7 +5,7 @@ title: OBCE
 sidebar_label: OBCE
 ---
 
-OBCE
+OpenBrush Chain Extension library
 ===
 
 Chain extensions are a way to extend the functionality available to smart contracts on a given node. It allows your smart contracts to directly use the features of the chain it was deployed on.

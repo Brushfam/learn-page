@@ -9,7 +9,7 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.svg',
+  favicon: 'img/favicon.ico',
   organizationName: '727-Ventures',
   projectName: 'learn-page',
   themeConfig: {
@@ -25,13 +25,27 @@ module.exports = {
       },
       items: [
         {
-          href: 'https://twitter.com/brushfam_io',
+          label: "Twitter",
+          to: 'https://twitter.com/Brushfam_io',
           className: 'header-twitter-link',
           position: 'right'
         },
         {
-          href: 'https://github.com/727-Ventures/openbrush-contracts',
-          className: 'header-github-link',
+          label: "Discord",
+          to: 'https://discord.gg/EARg6RCThP',
+          className: 'header-discord-link',
+          position: 'right'
+        },
+        {
+          label: "Element",
+          to: 'https://matrix.to/#/!utTuYglskDvqRRMQta:matrix.org?via=matrix.org&via=t2bot.io&via=web3.foundation',
+          className: 'header-element-link',
+          position: 'right'
+        },
+        {
+          label: "Medium",
+          to: 'https://medium.com/brushfam',
+          className: 'header-medium-link',
           position: 'right'
         }
       ]
