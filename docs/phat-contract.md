@@ -32,5 +32,7 @@ More about Phat Contract details you can read on [official page](https://wiki.ph
 ### How to use
 To create Phat Contract you just need to use [pink crate](https://crates.io/crates/pink-extension) for your existing smart contract.
 If you want to create, for instance, ERC-20 (PSP-22) token, you can use [OpenBrush](/OpenBrush/smart-contracts/psp22), and then you can add some
-functionality by using Phala Pink. Also, you can run your ink! contract in Phala blockchain even with no modifications
-or without using pink-extension.
+functionality by using Phala Pink. For sure, you can run your ink! contract in Phala blockchain with no modifications
+or without using `pink-extension`.
+
+Check [this repository](https://github.com/Phala-Network/phat-contract-examples) to see some examples of `pink-extension` usage.
