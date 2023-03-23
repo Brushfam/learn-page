@@ -32,7 +32,7 @@ module.exports = {
         },
         {
           label: "Discord",
-          to: 'https://discord.gg/EARg6RCThP',
+          to: 'https://discord.gg/9FRETSPmp9',
           className: 'header-discord-link',
           position: 'right'
         },
