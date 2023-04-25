@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 @import 'fonts';
 @import 'icons';
 @import 'layout';
@@ -7,20 +8,20 @@
 
 :root {
   --ifm-code-border-radius: 0;
-  --ifm-color-primary: #8c9640;
-  --ifm-color-primary-dark: #b4be68;
-  --ifm-color-primary-darker: #8c9640;
-  --ifm-color-primary-darkest: #5a5f34;
-  --ifm-color-primary-light: #c3cb86;
-  --ifm-color-primary-lighter: #d2d8a4;
-  --ifm-color-primary-lightest: #dadfb4;
+  --ifm-color-primary: #0C42CD;
+  --ifm-color-primary-dark: #0C42CD;
+  --ifm-color-primary-darker: #0C42CD;
+  --ifm-color-primary-darkest: #072980;
+  --ifm-color-primary-light: #255BE5;
+  --ifm-color-primary-lighter: #4277FF;
+  --ifm-color-primary-lightest: #799FFF;
   --ifm-code-font-size: 85%;
   --ifm-spacing-horizontal: 25px;
   --ifm-font-family-monospace: 'Sometype Mono';
-  --ifm-font-family-base: 'Sometype Mono';
-  --ifm-navbar-height: 60px;
+  --ifm-font-family-base: 'Poppins';
+  //--ifm-navbar-height: 60px;
   --ifm-menu-link-padding-horizontal: 20px;
-  --ifm-font-size-base: 95%;
+  --ifm-font-size-base: 90%;
   --ifm-navbar-shadow: none;
 }
 
@@ -33,10 +34,10 @@ html[data-theme='dark'] {
   --ifm-toc-border-color: #43494d;
   --ifm-navbar-background-color: #121516;
   --ifm-footer-background-color: #121516;
-  --ifm-color-primary: #d2d8a4;
-  --ifm-link-color: #d2d8a4;
-  --ifm-menu-color-active: #dadfb4;
-  --ifm-navbar-link-hover-color: #d2d8a4;
+  --ifm-color-primary: #4277FF;
+  --ifm-link-color: #799FFF;
+  --ifm-menu-color-active: #4277FF;
+  --ifm-navbar-link-hover-color: #fafafa;
 }
 
 html[data-theme='light'] {

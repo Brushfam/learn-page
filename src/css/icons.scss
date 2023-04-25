@@ -18,7 +18,7 @@
     background: url('/static/img/twitter-dark.svg') no-repeat;
     height: 17px;
     width: 22px;
-    margin-right: 10px;
+    margin-right: 6px;
 
     html[data-theme='dark'] & {
       background: url("/static/img/twitter.svg") no-repeat;
@@ -55,7 +55,6 @@
 }
 
 .header-medium-link {
-  padding-right: 18px;
   &:before {
     background: url('/static/img/medium-dark.svg') no-repeat;
     height: 13px;

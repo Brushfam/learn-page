@@ -1,0 +1,52 @@
+.tutorialContainer {
+    margin-top: 100px;
+    width: 840px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sectionTitle {
+    width: 100%;
+    font-weight: 600;
+    font-size: 24px;
+    border-bottom: 1px solid var(--ifm-toc-border-color);
+    margin-bottom: 40px;
+}
+
+.tutorialBlockContainer {
+    display: grid;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.tutorialBlockContainer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.tutorialBlock {
+    width: 400px;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+}
+
+.tutorialBlock:hover {
+    border: 1px solid rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+.tutorialTitle {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    text-align: center;
+    margin-bottom: 0;
+    max-width: 360px;
+}

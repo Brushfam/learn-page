@@ -14,14 +14,15 @@ module.exports = {
   projectName: 'learn-page',
   themeConfig: {
     colorMode: {
-      defaultMode: 'dark'
+      defaultMode: 'dark',
+      disableSwitch: true,
     },
     navbar: {
       logo: {
         alt: 'Brushfam',
         src: 'img/logo.svg',
         srcDark: 'img/logo-dark.svg',
-        href: 'https://brushfam.io'
+        href: '/'
       },
       items: [
         {
@@ -59,13 +60,24 @@ module.exports = {
       additionalLanguages: ['toml', 'rust']
     }
   },
-  plugins: ['docusaurus-plugin-sass'],
+  plugins: ['docusaurus-plugin-sass',
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'tutorials',
+        path: 'tutorials',
+        routeBasePath: 'tutorials',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ]
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
       {
         docs: {
-          routeBasePath: '/',
+          routeBasePath: 'docs',
+          path: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
         },
         theme: {

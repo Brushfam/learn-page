@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 slug: /phat-contract
 title: Phat Contract
 sidebar_label: Phat Contract

@@ -7,7 +7,8 @@
 }
 
 .navbar--fixed-top {
-  padding: 25px 0 0 0;
+  padding: 0;
+  border-bottom: 2px solid var(--ifm-toc-border-color);
 }
 
 .navbar__items {
@@ -19,8 +20,11 @@
 }
 
 .navbar__inner {
-  border: 2px solid var(--ifm-toc-border-color);
-  padding: 0 0 0 27px;
+  padding: 0 3%;
+}
+
+.navbar__inner .navbar__items--right > :last-child {
+  display: none;
 }
 
 @media (max-width: 994px) {
