@@ -7,9 +7,9 @@ This example shows how you can use the implementation of [access-control](https:
 
 ## Step 1: Import default implementation
 
-With [default `Cargo.toml`](/OpenBrush/smart-contracts/overview#the-default-toml-of-your-project-with-openbrush),
+With [default `Cargo.toml`](/docs/OpenBrush/smart-contracts/overview#the-default-toml-of-your-project-with-openbrush),
 you need to import the `access_control` module, enable the corresponding feature, and embed the module data structure
-as described in [that section](/OpenBrush/smart-contracts/overview#reuse-implementation-of-traits-from-openbrush).
+as described in [that section](/docs/OpenBrush/smart-contracts/overview#reuse-implementation-of-traits-from-openbrush).
 
 The main trait is `AccessControl`.
 

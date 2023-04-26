@@ -7,7 +7,7 @@ This example shows how you can reuse the implementation of [PSP37](https://githu
 
 ## How to use this extension
 
-First, you should implement basic version of [PSP37](/OpenBrush/smart-contracts/PSP37).
+First, you should implement basic version of [PSP37](/docs/OpenBrush/smart-contracts/PSP37).
 
 For your smart contract to use this extension, you only need to implement the 
 `PSP37Mintable` trait in your `PSP37` smart contract. Add import for 

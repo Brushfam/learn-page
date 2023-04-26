@@ -7,9 +7,9 @@ This example shows how you can reuse the implementation of [PSP22](https://githu
 
 ## Step 1: Import default implementation
 
-With [default `Cargo.toml`](/OpenBrush/smart-contracts/overview#the-default-toml-of-your-project-with-openbrush),
+With [default `Cargo.toml`](/docs/OpenBrush/smart-contracts/overview#the-default-toml-of-your-project-with-openbrush),
 you need to import the `psp22` module, enable the corresponding feature, and embed the module data structure
-as described in [that section](/OpenBrush/smart-contracts/overview#reuse-implementation-of-traits-from-openbrush).
+as described in [that section](/docs/OpenBrush/smart-contracts/overview#reuse-implementation-of-traits-from-openbrush).
 
 The main trait is `PSP22`.
 
@@ -105,16 +105,16 @@ You can check an example of the usage of [PSP22](https://github.com/727-Ventures
 
 Also, you can use extensions for PSP22 token:
 
-[PSP22Metadata](/OpenBrush/smart-contracts/psp22/extensions/metadata): metadata for PSP22.
+[PSP22Metadata](/docs/OpenBrush/smart-contracts/psp22/extensions/metadata): metadata for PSP22.
 
-[PSP22Mintable](/OpenBrush/smart-contracts/psp22/extensions/mintable): creation of new tokens.
+[PSP22Mintable](/docs/OpenBrush/smart-contracts/psp22/extensions/mintable): creation of new tokens.
 
-[PSP22Burnable](/OpenBrush/smart-contracts/psp22/extensions/burnable): destruction of own tokens.
+[PSP22Burnable](/docs/OpenBrush/smart-contracts/psp22/extensions/burnable): destruction of own tokens.
 
-[PSP22Wrapper](/OpenBrush/smart-contracts/psp22/extensions/wrapper): token wrapper for PSP22.
+[PSP22Wrapper](/docs/OpenBrush/smart-contracts/psp22/extensions/wrapper): token wrapper for PSP22.
 
-[PSP22FlashMint](/OpenBrush/smart-contracts/psp22/extensions/flashmint): extension which allows the user to perform flashloans on the token by minting and burning the token.
+[PSP22FlashMint](/docs/OpenBrush/smart-contracts/psp22/extensions/flashmint): extension which allows the user to perform flashloans on the token by minting and burning the token.
 
 Check out the utilities for PSP22 token:
 
-[PSP22TokenTimelock](/OpenBrush/smart-contracts/psp22/utils/token-timelock): utility for locking PSP22 tokens for a specified time.
+[PSP22TokenTimelock](/docs/OpenBrush/smart-contracts/psp22/utils/token-timelock): utility for locking PSP22 tokens for a specified time.

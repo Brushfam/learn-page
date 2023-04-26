@@ -14,7 +14,7 @@ export const TutorialSection = () => {
                     tutorialsData &&
                     tutorialsData.map((item, i) => {
                         return(
-                                <Link href={item.to}>
+                                <Link key={i} href={item.to}>
                                     <div className={"tutorialBlock"}>
                                         <p className={"tutorialTitle"}>
                                             {item.title}

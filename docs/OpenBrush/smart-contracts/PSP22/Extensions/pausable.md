@@ -5,13 +5,13 @@ title: PSP22 Pausable
 
 This example shows how you can implement a [PSP22](https://github.com/727-Ventures/openbrush-contracts/tree/main/contracts/src/token/psp22) contract with a [Pausable](https://github.com/727-Ventures/openbrush-contracts/tree/main/contracts/src/security/pausable) extension. See an example of [PSP22Pausable](https://github.com/727-Ventures/openbrush-contracts/tree/main/examples/psp22_extensions/pausable) implementation.
 
-First, you should implement basic version of [PSP22](/OpenBrush/smart-contracts/PSP22).
+First, you should implement basic version of [PSP22](/docs/OpenBrush/smart-contracts/PSP22).
 
 ## Step 1: Import default implementation
 
-With [default `Cargo.toml`](/OpenBrush/smart-contracts/overview#the-default-toml-of-your-project-with-openbrush),
+With [default `Cargo.toml`](/docs/OpenBrush/smart-contracts/overview#the-default-toml-of-your-project-with-openbrush),
 you need to import the `psp22` and `pausable` modules, enable corresponding features, and embed modules data structures
-as described in [that section](/OpenBrush/smart-contracts/overview#reuse-implementation-of-traits-from-openbrush).
+as described in [that section](/docs/OpenBrush/smart-contracts/overview#reuse-implementation-of-traits-from-openbrush).
 
 The main trait is `PSP22` and `Pausable`.
 
@@ -147,4 +147,4 @@ pub mod my_psp22_pausable {
 
 You can check an implementation example of [PSP22 Pausable](https://github.com/727-Ventures/openbrush-contracts/tree/main/examples/psp22_extensions/pausable).
 
-You can also check the documentation for the basic implementation of [PSP22](/OpenBrush/smart-contracts/PSP22).
+You can also check the documentation for the basic implementation of [PSP22](/docs/OpenBrush/smart-contracts/PSP22).

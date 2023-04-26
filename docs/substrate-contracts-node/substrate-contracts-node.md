@@ -14,7 +14,7 @@ If you want to locally deploy and test your smart contract, then `substrate-cont
 So what `substrate-contracts-node` actually is? Long story short, it’s just a simple substrate node, that has useful pallets, 
 such as `pallet-contracts`, `pallet-assets` etc., for smart contract development already enabled and some default accounts, 
 like Alice, Bob and others with some amount of tokens inside. Also it has [pallet-assets-chain-extension](https://github.com/727-Ventures/pallet-assets-chain-extension), which is maintained 
-by Brushfam team, enabled, so if you want to try testing your contract with [PSP22Pallet](https://github.com/727-Ventures/openbrush-contracts/tree/main/contracts/src/token/psp22_pallet) from [OpenBrush](/openbrush), it will work just fine.
+by Brushfam team, enabled, so if you want to try testing your contract with [PSP22Pallet](https://github.com/727-Ventures/openbrush-contracts/tree/main/contracts/src/token/psp22_pallet) from [OpenBrush](/docs/openbrush), it will work just fine.
 
 ## Installation
 

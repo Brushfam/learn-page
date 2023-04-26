@@ -9,7 +9,7 @@ In this file, we only need to "inherit" it.
 ## Add dependencies
 
 `LendingContract` instantiates the `SharesContract` and `LoanContract`, so we
-should import them as `ink-as-dependency`. Also we want to use the `AccessControl`
+should import them as `ink-as-dependency`. Also, we want to use the `AccessControl`
 and `Pausable` from OpenBrush, so we import them too. We also want to "inherit" the
 implementation of `Lending` and `LendingPermissioned` traits defined in the `lending_project` crate.
 

@@ -9,12 +9,12 @@ export const toolsData = [
     {
         to: "/docs/sol2ink",
         title: <img src={"/img/sol2ink.svg"} alt={"sol2ink"}/>,
-        description: "Is a tool for easy migration from Solidity to ink! and Rust, helps projects and teams migrate their smart contracts from popular Solidity to Polkadot`s ink!.",
+        description: "Sol2ink is a tool for easy migration from Solidity to ink! and Rust, helps projects and teams migrate their smart contracts from popular Solidity to Polkadot`s ink!.",
     },
     {
         to: "/docs/typechain",
         title: <img src={"/img/typechain.svg"} alt={"typechain"}/>,
-        description: "Is a tool that generates type-safe TypeScript interfaces for ink! smart contracts, to improve blockchain and front-end development",
+        description: "Typechain is a tool that generates type-safe TypeScript interfaces for ink! smart contracts, to improve blockchain and front-end development",
     },
     {
         to: "/docs/obce",
@@ -34,6 +34,6 @@ export const toolsData = [
     {
         to: "/docs/substrate-contracts-node",
         title: <h3>substrate-contracts-node</h3>,
-        description: "The substrate-contracts-node is a simple Substrate blockchain which is configured to include the contracts module. It's a comfortable option if you want to get a quickstart.",
+        description: "The substrate-contracts-node is a simple Substrate blockchain which is configured to include the contracts pallet.",
     },
 ]

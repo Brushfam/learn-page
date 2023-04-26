@@ -40,7 +40,7 @@ export const MediumBlog = () => {
                             key={item.link}
                         >
                             <div className={"mediumBlock"}>
-                                <p>
+                                <p className={"articleTitle"}>
                                     {item.title.replace("&amp;", "&")}
                                 </p>
                                 <p className={"articleDate"}>

@@ -25,19 +25,19 @@ So, first, let’s take a basic smart contract implementation from ink!:
 #[ink::contract]
 pub mod my_contract {
     #[ink(storage)]
-		#[derive(Default)]
+    #[derive(Default)]
     pub struct Contract {}
 
-    impl Contract {
-				#[ink(constructor)]
+    impl Contract { 
+        #[ink(constructor)]
         pub fn new() -> Self {
-            Default::default()
+          Default::default()
         }
 
-				#[ink(message)]
-				pub fn get_true(&self) -> bool {
-						true
-				}
+        #[ink(message)]
+        pub fn get_true(&self) -> bool {
+          true
+        }
     }
 }
 ```
@@ -68,19 +68,19 @@ In general, it will look like this:
 #[openbrush::contract]
 pub mod my_contract {
     #[ink(storage)]
-		#[derive(Default)]
+    #[derive(Default)]
     pub struct Contract {}
 
-    impl Contract {
-				#[ink(constructor)]
+    impl Contract { 
+        #[ink(constructor)]
         pub fn new() -> Self {
             Default::default()
         }
 
-				#[ink(message)]
-				pub fn get_true(&self) -> bool {
-						true
-				}
+        #[ink(message)]
+        pub fn get_true(&self) -> bool {
+          true
+        }
     }
 }
 ```

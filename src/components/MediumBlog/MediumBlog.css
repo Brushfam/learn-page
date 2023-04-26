@@ -1,6 +1,6 @@
 .mediumContainer {
     margin-top: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     width: 840px;
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@
 .mediumBlock {
     width: 400px;
     height: 120px;
-    padding: 12px;
+    padding: 16px 12px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -45,9 +45,8 @@
 
 .articleTitle {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 14px;
     line-height: 120%;
-    text-align: center;
     margin-bottom: 0;
     max-width: 360px;
 }
@@ -60,4 +59,29 @@
     font-size: 12px;
     line-height: 120%;
     margin-bottom: 0;
+}
+
+@media (max-width: 996px) {
+    .mediumContainer {
+        width: 89%;
+    }
+
+    .mediumBlockContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 460px) {
+    .mediumBlock {
+        width: 300px;
+        height: auto;
+    }
+
+    .articleTitle {
+        margin-bottom: 36px;
+    }
+
+    .articleDate {
+        bottom: 14px;
+    }
 }

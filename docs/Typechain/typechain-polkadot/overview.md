@@ -201,15 +201,15 @@ typechain.run(
 
 Typechain-polkadot uses plugins to generate code. By default, it uses the following plugins:
 
-- build-extrinsic [docs](/Typechain/typechain-polkadot/Plugins/build-extrinsic)
-- constructors [docs](/Typechain/typechain-polkadot/Plugins/constructors)
-- contract [docs](/Typechain/typechain-polkadot/Plugins/contract)
-- data [docs](/Typechain/typechain-polkadot/Plugins/data)
-- events [docs](/Typechain/typechain-polkadot/Plugins/events)
-- events-types [docs](/Typechain/typechain-polkadot/Plugins/events-types)
-- mixed-methods [docs](/Typechain/typechain-polkadot/Plugins/mixed-methods)
-- query [docs](/Typechain/typechain-polkadot/Plugins/query)
-- tx-sign-and-send [docs](/Typechain/typechain-polkadot/Plugins/tx-sign-and-send)
+- build-extrinsic [docs](/docs/Typechain/typechain-polkadot/Plugins/build-extrinsic)
+- constructors [docs](/docs/Typechain/typechain-polkadot/Plugins/constructors)
+- contract [docs](/docs/Typechain/typechain-polkadot/Plugins/contract)
+- data [docs](/docs/Typechain/typechain-polkadot/Plugins/data)
+- events [docs](/docs/Typechain/typechain-polkadot/Plugins/events)
+- events-types [docs](/docs/Typechain/typechain-polkadot/Plugins/events-types)
+- mixed-methods [docs](/docs/Typechain/typechain-polkadot/Plugins/mixed-methods)
+- query [docs](/docs/Typechain/typechain-polkadot/Plugins/query)
+- tx-sign-and-send [docs](/docs/Typechain/typechain-polkadot/Plugins/tx-sign-and-send)
 
 
 
