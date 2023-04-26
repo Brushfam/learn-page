@@ -7,7 +7,7 @@ This example shows how you can reuse the implementation of [PSP34](https://githu
 
 ## How to use this extension
 
-First, you should implement basic version of [PSP34](/OpenBrush/smart-contracts/PSP34).
+First, you should implement basic version of [PSP34](/docs/OpenBrush/smart-contracts/PSP34).
 
 For your smart contract to use this extension, you only need to implement the 
 `PSP34Mintable` trait in your `PSP34` smart contract. Add import for 
@@ -24,4 +24,4 @@ impl PSP34Mintable for Contract {}
 And that's it! Your `PSP34` is now extended by the `PSP34Mintable` extension and ready to use its functions!
 You can check an example of the usage of [PSP34 Mintable](https://github.com/727-Ventures/openbrush-contracts/tree/main/examples/psp34_extensions/mintable).
 
-You can also check the documentation for the basic implementation of [PSP34](/OpenBrush/smart-contracts/PSP34).
+You can also check the documentation for the basic implementation of [PSP34](/docs/OpenBrush/smart-contracts/PSP34).

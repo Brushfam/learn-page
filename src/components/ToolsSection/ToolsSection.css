@@ -1,0 +1,86 @@
+.toolsContainer {
+    margin-top: 100px;
+    width: 840px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sectionTitle {
+    width: 100%;
+    font-weight: 600;
+    font-size: 24px;
+    border-bottom: 1px solid var(--ifm-toc-border-color);
+    margin-bottom: 40px;
+}
+
+.toolsBlockContainer {
+    display: grid;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.toolBlockWrapper {
+    width: 250px;
+    height: 260px;
+}
+
+.toolBlockWrapper a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.toolBlock {
+    width: 250px;
+    height: 250px;
+    padding: 32px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    transition: margin-top ease 0.4s;
+}
+
+.toolBlock:hover {
+    margin-top: -10px;
+    border: 1px solid rgba(66, 119, 255, 1);
+    cursor: pointer;
+}
+
+.toolBlock img {
+    margin-bottom: 12px;
+}
+
+.toolBlock h3 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.blockTitle {
+    font-weight: 400;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.blockDescription {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+}
+
+@media (max-width: 996px) {
+    .toolsContainer {
+        width: 89%;
+    }
+
+    .toolsBlockContainer {
+        grid-column-gap: 50px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 710px) {
+    .toolsBlockContainer {
+        grid-row-gap: 30px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

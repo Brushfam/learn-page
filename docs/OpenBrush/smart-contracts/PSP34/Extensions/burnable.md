@@ -7,7 +7,7 @@ This example shows how you can reuse the implementation of [PSP34](https://githu
 
 ## How to use this extension
 
-First, you should implement basic version of [PSP34](/OpenBrush/smart-contracts/PSP34).
+First, you should implement basic version of [PSP34](/docs/OpenBrush/smart-contracts/PSP34).
 
 For your smart contract to use this extension, you only need to implement the 
 `PSP34Burnable` trait in your `PSP34` smart contract. Add import for 

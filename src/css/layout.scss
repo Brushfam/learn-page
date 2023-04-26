@@ -4,11 +4,11 @@ html {
 
 body {
   padding: 0;
+  word-spacing: 2px;
 }
 
 .main-wrapper {
-  border-left: 2px solid var(--ifm-toc-border-color);
-  border-right: 2px solid var(--ifm-toc-border-color);
+  padding-left: 3%;
 }
 
 main > .container {
@@ -28,7 +28,11 @@ main > .container {
 
 html[data-theme='dark'],
 html[data-theme='light'] {
-  --ifm-navbar-height: 110px;
+  --ifm-navbar-height: 90px;
+}
+
+.footer {
+  padding: 36px 20px;
 }
 
 @media (max-width: 767px) {
@@ -50,13 +54,11 @@ html[data-theme='light'] {
 }
 
 @media (min-width: 768px) {
-
   body {
-    padding: 0 25px;
+    padding: 0;
   }
 
   .footer {
-    margin-bottom: 25px;
   }
 }
 

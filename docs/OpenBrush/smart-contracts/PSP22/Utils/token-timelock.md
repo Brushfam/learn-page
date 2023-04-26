@@ -98,4 +98,4 @@ pub mod my_psp22_token_timelock {
 
 You can check an example of the usage of [PSP22 Token Timelock](https://github.com/727-Ventures/openbrush-contracts/tree/main/examples/psp22_utils/token_timelock).
 
-You can also check the documentation for the basic implementation of [PSP22](/OpenBrush/smart-contracts/PSP22).
+You can also check the documentation for the basic implementation of [PSP22](/docs/OpenBrush/smart-contracts/PSP22).

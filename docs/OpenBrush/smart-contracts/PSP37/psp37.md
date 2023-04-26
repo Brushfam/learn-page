@@ -9,9 +9,9 @@ track the number of token types with `unique_ids`, adding a new token type with 
 
 ## Step 1: Import default implementation
 
-With [default `Cargo.toml`](/OpenBrush/smart-contracts/overview#the-default-toml-of-your-project-with-openbrush),
+With [default `Cargo.toml`](/docs/OpenBrush/smart-contracts/overview#the-default-toml-of-your-project-with-openbrush),
 you need to import the `psp37` module, enable the corresponding feature, and embed the module data structure
-as described in [that section](/OpenBrush/smart-contracts/overview#reuse-implementation-of-traits-from-openbrush).
+as described in [that section](/docs/OpenBrush/smart-contracts/overview#reuse-implementation-of-traits-from-openbrush).
 
 The main trait is `PSP37`.
 
@@ -86,12 +86,12 @@ You can check an example of the usage of [PSP37](https://github.com/727-Ventures
 
 Also you can use extensions for PSP37 token:
 
-[PSP37Metadata](/OpenBrush/smart-contracts/PSP37/extensions/metadata): metadata for PSP37.
+[PSP37Metadata](/docs/OpenBrush/smart-contracts/PSP37/extensions/metadata): metadata for PSP37.
 
-[PSP37Mintable](/OpenBrush/smart-contracts/PSP37/extensions/mintable): creation of new tokens.
+[PSP37Mintable](/docs/OpenBrush/smart-contracts/PSP37/extensions/mintable): creation of new tokens.
 
-[PSP37Burnable](/OpenBrush/smart-contracts/PSP37/extensions/burnable): destruction of contract's tokens.
+[PSP37Burnable](/docs/OpenBrush/smart-contracts/PSP37/extensions/burnable): destruction of contract's tokens.
 
-[PSP37Batch](/OpenBrush/smart-contracts/PSP37/extensions/batch): transfer batch of tokens.
+[PSP37Batch](/docs/OpenBrush/smart-contracts/PSP37/extensions/batch): transfer batch of tokens.
 
-[PSP37Enumerable](/OpenBrush/smart-contracts/PSP37/extensions/enumerable): iterates over contract's tokens.
+[PSP37Enumerable](/docs/OpenBrush/smart-contracts/PSP37/extensions/enumerable): iterates over contract's tokens.

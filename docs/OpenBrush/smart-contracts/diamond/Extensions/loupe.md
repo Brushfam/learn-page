@@ -7,7 +7,7 @@ This example shows how you can reuse the implementation of [Diamond Standard](ht
 
 ## How to use this extension
 
-First, you should implement basic version of [Diamond standard](/OpenBrush/smart-contracts/diamond).
+First, you should implement basic version of [Diamond standard](/docs/OpenBrush/smart-contracts/diamond).
 
 For your smart contract to use this extension, you only need to implement the `DiamoundLoupe` trait in your
 `Diamond` smart contract. Add import for `openbrush::contracts::diamond::extensions::diamond_loupe::*`,

@@ -7,7 +7,7 @@ This example shows how you can reuse the implementation of [PSP22](https://githu
 
 ## 1. Implement the FlashMint extension
 
-First, you should implement basic version of [PSP22](/OpenBrush/smart-contracts/PSP22).
+First, you should implement basic version of [PSP22](/docs/OpenBrush/smart-contracts/PSP22).
 
 For your smart contract to use this extension, you need to implement the 
 `PSP22FlashMint` trait in your `PSP22` smart contract. 

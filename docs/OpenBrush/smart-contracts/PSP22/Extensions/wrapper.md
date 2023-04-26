@@ -5,7 +5,7 @@ title: PSP22 Wrapper
 
 This example shows how you can reuse the implementation of [PSP22](https://github.com/727-Ventures/openbrush-contracts/tree/main/contracts/src/token/psp22) token with [PSP22 Wrapper](https://github.com/727-Ventures/openbrush-contracts/tree/main/contracts/src/token/psp22/extensions/wrapper.rs) extension, which allows you to wrap your `PSP22` token in a `PSP22Wrapper` token which can be used for example for governance.
 
-First, you should implement basic version of [PSP22](/OpenBrush/smart-contracts/PSP22).
+First, you should implement basic version of [PSP22](/docs/OpenBrush/smart-contracts/PSP22).
 
 ## Step 1: Add imports and enable unstable feature
 
@@ -115,4 +115,4 @@ pub mod my_psp22_wrapper {
 
 You can check an example of the usage of [PSP22 Wrapper](https://github.com/727-Ventures/openbrush-contracts/tree/main/examples/psp22_extensions/wrapper).
 
-You can also check the documentation for the basic implementation of [PSP22](/OpenBrush/smart-contracts/PSP22).
+You can also check the documentation for the basic implementation of [PSP22](/docs/OpenBrush/smart-contracts/PSP22).

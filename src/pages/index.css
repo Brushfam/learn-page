@@ -1,0 +1,59 @@
+.learnMainWrapper {
+
+}
+
+.learnMainWrapper .navbar__toggle {
+    display: none;
+}
+
+.learnMainWrapper .main-wrapper {
+    padding-left: 0;
+}
+
+.learnMainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 110px 20px 20px 20px;
+}
+
+.learnMainContainer .navbar__toggle {
+    display: none;
+}
+
+.learnHeaderContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.learnHeaderText {
+    width: 840px;
+}
+
+.learnHeaderTitle {
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 120%;
+    margin-bottom: 20px;
+}
+
+.learnHeaderDescription {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+}
+
+
+@media (max-width: 996px) {
+    .learnMainWrapper .navbar__inner {
+        padding: 0 4%;
+    }
+
+   .learnHeaderText {
+       width: 89%;
+   }
+}
+
+
+

@@ -150,7 +150,7 @@ $ touch typechain.config.json
   "typechainGeneratedPath": "./typechain-generated"
 }
 ```
-To dive deeper into configuration, you can check [typechain-compiler documentation](/Typechain/typechain-compiler)
+To dive deeper into configuration, you can check [typechain-compiler documentation](/docs/Typechain/typechain-compiler)
 
 6) And now, let's install `typechain-compiler`. Also we will need to have `@polkadot/api`, `@polkadot/api-contract` and some other packages installed:
 Add the following to your `package.json`:
@@ -418,4 +418,4 @@ $ npx @727-ventures/typechain-polkadot --in ./artifacts --out ./typechain-genera
 
 Wow! We've just generated code for our contracts using typechain directly! 🎉
 
-> For more information about `typechain-polkadot` you can check [typechain-polkadot documentation](/Typechain/typechain-polkadot/overview)
+> For more information about `typechain-polkadot` you can check [typechain-polkadot documentation](/docs/Typechain/typechain-polkadot/overview)
