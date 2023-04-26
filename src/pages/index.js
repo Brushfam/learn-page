@@ -19,8 +19,8 @@ export default function Home() {
                         <div className={"learnHeaderText"}>
                             <p className={"learnHeaderTitle"}>Learn page</p>
                             <p className={"learnHeaderDescription"}>
-                                Here you can find documentation for <a href={"https://brushfam.io/"}>Brushfam's</a> infrastructure products and other trusted and everyday-used tools from the <a href={"https://use.ink/"}>ink!</a> ecosystem.
-                                Along with this, this page also contains useful materials and articles that will accelerate your building with ink!
+                                Here you can find the documentation for <a href={"https://brushfam.io/"}>Brushfam's</a> infrastructure products and other trusted and everyday-used tools from the <a href={"https://use.ink/"}>ink!</a> ecosystem.
+                                This page also contains useful materials and articles that will accelerate your building with ink!
                             </p>
                         </div>
                     </div>
