@@ -9,7 +9,8 @@ sidebar_label: Creating smart contract using OpenBrush
 
 In this tutorial, we will explain how to create your first dApp using OpenBrush.
 
-As a base, we will take a few implementations from OpenBrush: PSP22, PSP22Metadata and Ownable extensions.
+As a base, we will take a few implementations from OpenBrush: [PSP22](/docs/OpenBrush/smart-contracts/PSP22), 
+[PSP22Metadata](/docs/OpenBrush/smart-contracts/PSP22/Extensions/metadata) and [Ownable](/docs/OpenBrush/smart-contracts/ownable) extensions.
 
 So, let’s start!
 
@@ -49,7 +50,7 @@ Pretty simple for now, right?
 ## Import OpenBrush
 
 Here we will have two steps: adding the OpenBrush dependency to `Cargo.toml` of your contract and injecting it into your contract’s code. 
-So, to add a dependency, you need to check the latest version of OpenBrush that is compatible with your version of ink! You can find it here. 
+So, to add a dependency, you need to check the latest version of OpenBrush that is compatible with your version of ink! 
 At the time this tutorial is written, the latest release is `3.1.0` and the latest version of ink! is `4.2.0`.
 
 Let’s get to the `Cargo.toml`, all you need to do is to add a line like this:
@@ -167,22 +168,23 @@ So what changed? Let’s see.
 
 
 - Update the storage struct with the required data:
-    ```rust
-    #[ink(storage)]
-    #[derive(Storage)]
-    pub struct Contract {
+```rust
+#[ink(storage)]
+#[derive(Storage)]
+pub struct Contract {
     #[storage_field]
     psp22: psp22::Data,
     #[storage_field]
     metadata: metadata::Data,
     #[storage_field]
     ownable: ownable::Data,
-    }
-    ```
-    You can see, that we have added derive for Storage trait. It allows OpenBrush to work with all the data you imported 
-    inside OpenBrush implementations. We also marked every such field as `#[storage_field]`. It will generate 
-    implementation of Storage trait for storage and every marked field, so you will be able to access data like 
-    `self.data::<psp22::Data>()` and it will actually return the required field with data you want.
+}
+```
+
+You can see, that we have added derive for Storage trait. It allows OpenBrush to work with all the data you imported 
+inside OpenBrush implementations. We also marked every such field as `#[storage_field]`. It will generate 
+implementation of Storage trait for storage and every marked field, so you will be able to access data like 
+`self.data::<psp22::Data>()` and it will actually return the required field with data you want.
 
 
 - Add impl sections for default trait implementations:
@@ -196,31 +198,32 @@ So what changed? Let’s see.
    In this section you implement default implementations of these traits. You can also customize them, but we will explain this later.
  
 - Update constructor:
-    ```rust
+  ```rust
   #[ink(constructor)]
-    pub fn new(
-    total_supply: Balance,
-    name: Option<String>,
-    symbol: Option<String>,
-    decimals: u8,
+  pub fn new(
+      total_supply: Balance,
+      name: Option<String>,
+      symbol: Option<String>,
+      decimals: u8,
     ) -> Self {
-        let mut instance: Self = Default::default();
+      let mut instance: Self = Default::default();
+  
+      instance
+          ._mint_to(Self::env().caller(), total_supply)
+          .expect("Should mint");
+  
+      instance._init_with_owner(Self::env().caller());
+  
+      instance.metadata.name = name;
+      instance.metadata.symbol = symbol;
+      instance.metadata.decimals = decimals;
+  
+      instance
+  } 
+  ```
 
-        instance
-            ._mint_to(Self::env().caller(), total_supply)
-            .expect("Should mint");
-    
-        instance._init_with_owner(Self::env().caller());
-    
-        instance.metadata.name = name;
-        instance.metadata.symbol = symbol;
-        instance.metadata.decimals = decimals;
-    
-        instance
-    }
-    ```
-  Here we updated constructor to initialize all the required data for PSP22, PSP22Metadata and Ownable. In some traits 
-  there already exists default internal initialize function, like `_init_with_owner()`, but for metadata extension you need to do it manually.
+Here we updated constructor to initialize all the required data for PSP22, PSP22Metadata and Ownable. In some traits 
+there already exists default internal initialize function, like `_init_with_owner()`, but for metadata extension you need to do it manually.
 
 So, now you have your basic smart contract, that implements PSP22, PSP22Metadata and Ownable. Let’s customize it!
 
@@ -231,12 +234,12 @@ You can customize any method in OpenBrush default implementation. It is as simpl
 
 ```rust
 impl psp22::Internal for Contract {
-    fn _allowance(&self, owner: &AccountId, spender: &AccountId) -> Balance {
-	       self.data::<psp22::Data>()
-         .allowances
-         .get(&(owner, spender))
-         .unwrap_or(10)
-	  }
+  fn _allowance(&self, owner: &AccountId, spender: &AccountId) -> Balance {
+    self.data::<psp22::Data>()
+      .allowances
+      .get(&(owner, spender))
+      .unwrap_or(10)
+  }
 }
 ```
 
@@ -275,7 +278,7 @@ Just like that:
 ```rust
 #[cfg(test)]
 mod tests {
-		use super::*;
+    use super::*;
 }
 ```
 
@@ -306,7 +309,7 @@ Here we created a new instance of contract and minted 100 tokens. To check if ev
 
 ## Deployment
 
-I guess now you would like to interact with your contract somehow. To do this, let’s run a substrate node and deploy contract there. 
+I guess now you would like to interact with your contract somehow. To do this, let’s run a [substrate node](/docs/substrate-contracts-node) and deploy contract there. 
 
 - Install contracts-node from [here](https://github.com/paritytech/substrate-contracts-node). You will also find the instruction to run it if you check the link, but shortly, you can just run the following command: `substrate-contracts-node --dev` 
 
