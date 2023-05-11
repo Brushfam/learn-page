@@ -4,7 +4,6 @@ import './index.css';
 import {MediumBlog} from "../components/MediumBlog/MediumBlog";
 import {ToolsSection} from "../components/ToolsSection/ToolsSection";
 import {TutorialSection} from "../components/TutorialSection/TutorialSection";
-import Link from "@docusaurus/Link";
 
 
 export default function Home() {
