@@ -22,7 +22,8 @@ module.exports = {
         alt: 'Brushfam',
         src: 'img/logo.svg',
         srcDark: 'img/logo-dark.svg',
-        href: '/'
+        href: 'https://brushfam.io',
+        target: '_self',
       },
       items: [
         {
