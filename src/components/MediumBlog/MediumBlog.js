@@ -5,7 +5,7 @@ const mediumRssFeed =
     "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fbrushfam";
 
 export const MediumBlog = () => {
-    const max_articles = 6;
+    const max_articles = 7;
     const [articles, setArticles] = useState();
 
     useEffect(() => {
@@ -32,22 +32,23 @@ export const MediumBlog = () => {
             <div className={"mediumBlockContainer"}>
             {articles
                 ? articles.map((item) => (
-                        <a
-                            href={item.link}
-                            target="_blank"
-                            title={item.title}
-                            aria-label={item.title}
-                            key={item.link}
-                        >
-                            <div className={"mediumBlock"}>
-                                <p className={"articleTitle"}>
-                                    {item.title.replace("&amp;", "&")}
-                                </p>
-                                <p className={"articleDate"}>
-                                    {item.pubDate.slice(0,10)}
-                                </p>
-                            </div>
-                        </a>
+                        item.title.slice(0,2) !== "Як" ?
+                            <a
+                                href={item.link}
+                                target="_blank"
+                                title={item.title}
+                                aria-label={item.title}
+                                key={item.link}
+                            >
+                                <div className={"mediumBlock"}>
+                                    <p className={"articleTitle"}>
+                                        {item.title.replace("&amp;", "&")}
+                                    </p>
+                                    <p className={"articleDate"}>
+                                        {item.pubDate.slice(0,10)}
+                                    </p>
+                                </div>
+                            </a> : <></>
                 ))
                 : "no article shown"}
             </div>
