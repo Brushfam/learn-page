@@ -15,13 +15,15 @@ export const TutorialSection = () => {
                     tutorialsData &&
                     tutorialsData.map((item, i) => {
                         return(
-                                <Link key={i} href={item.to}>
+                            <div className={"tutorialBlockWrapper"} key={i}>
+                                <Link href={item.to}>
                                     <div className={"tutorialBlock"}>
                                         <p className={"tutorialTitle"}>
                                             {item.title}
                                         </p>
                                     </div>
                                 </Link>
+                            </div>
                         )
                     })
                 }

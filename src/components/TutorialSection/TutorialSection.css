@@ -24,11 +24,16 @@
 .tutorialBlockContainer {
     display: grid;
     grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-row-gap: 10px;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.tutorialBlockContainer a {
+.tutorialBlockWrapper {
+    width: 394px;
+    height: 122px;
+}
+
+.tutorialBlockWrapper a {
     color: #ffffff;
     text-decoration: none;
 }
@@ -42,9 +47,11 @@
     justify-content: center;
     border: 1px solid var(--ifm-toc-border-color);
     border-radius: 6px;
+    transition: margin-top ease 0.4s;
 }
 
 .tutorialBlock:hover {
+    margin-top: -10px;
     border: 1px solid rgba(255, 255, 255, 0.8);
     cursor: pointer;
 }
@@ -74,6 +81,11 @@
         width: 300px;
         height: 80px;
         padding: 14px;
+    }
+
+    .tutorialBlockWrapper {
+        width: 304px;
+        height: 90px;
     }
 
     .tutorialTitle {

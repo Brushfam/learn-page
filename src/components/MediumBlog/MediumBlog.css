@@ -29,7 +29,12 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-.mediumBlockContainer a {
+.mediumBlockWrapper {
+    width: 394px;
+    height: 244px;
+}
+
+.mediumBlockWrapper a {
     color: #ffffff;
     text-decoration: none;
 }
@@ -42,9 +47,11 @@
     height: 234px;
     border: 1px solid var(--ifm-toc-border-color);
     border-radius: 6px;
+    transition: margin-top ease 0.4s;
 }
 
 .mediumBlock:hover {
+    margin-top: -10px;
     border: 1px solid rgba(255, 255, 255, 0.8);
     cursor: pointer;
 }
@@ -89,7 +96,12 @@
 @media (max-width: 460px) {
     .mediumBlock {
         width: 300px;
-        height: auto;
+        height: 208px;
+    }
+
+    .mediumBlockWrapper {
+        width: 304px;
+        height: 218px;
     }
 
     .descriptionBlock {

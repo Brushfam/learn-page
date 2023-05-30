@@ -49,7 +49,7 @@
 
 .toolBlock:hover {
     margin-top: -10px;
-    border: 1px solid rgba(66, 119, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     cursor: pointer;
 }
 

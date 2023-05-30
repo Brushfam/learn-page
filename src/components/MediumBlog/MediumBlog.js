@@ -32,26 +32,27 @@ export const MediumBlog = () => {
             {articles
                 ? articles.map((item, i) => (
                         item.title.slice(0,2) !== "Як" ?
-                            <a
-                                href={item.link}
-                                target="_blank"
-                                title={item.title}
-                                aria-label={item.title}
-                                key={i.toString()}
-                            >
+                            <div className={"mediumBlockWrapper"} key={i.toString()}>
+                                <a
+                                    href={item.link}
+                                    target="_blank"
+                                    title={item.title}
+                                    aria-label={item.title}
+                                >
 
-                                <div className={"mediumBlock"}>
-                                    <img src={item.thumbnail} style={{padding: 0}} alt={item.title}/>
-                                    <div className={"descriptionBlock"}>
-                                        <p className={"articleTitle"}>
-                                            {item.title.replace("&amp;", "&")}
-                                        </p>
-                                        <p className={"articleDate"}>
-                                            {item.pubDate.slice(0,10)}
-                                        </p>
+                                    <div className={"mediumBlock"}>
+                                        <img src={item.thumbnail} style={{padding: 0}} alt={item.title}/>
+                                        <div className={"descriptionBlock"}>
+                                            <p className={"articleTitle"}>
+                                                {item.title.replace("&amp;", "&")}
+                                            </p>
+                                            <p className={"articleDate"}>
+                                                {item.pubDate.slice(0,10)}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a> : <></>
+                                </a>
+                            </div> : <></>
                 ))
                 : "no article shown"}
             </div>
