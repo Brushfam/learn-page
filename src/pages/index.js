@@ -11,7 +11,7 @@ export default function Home() {
         <div className={"learnMainWrapper"}>
             <Layout
                 title={`Brushfam docs`}
-                description="Description will go into a meta tag in <head />">
+                description="This page contains useful materials and articles that will accelerate your building with ink!">
 
                 <main className={"learnMainContainer"}>
                     <div className={"learnHeaderContainer"}>
