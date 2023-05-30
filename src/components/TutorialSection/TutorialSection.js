@@ -6,9 +6,10 @@ import Link from "@docusaurus/Link";
 export const TutorialSection = () => {
     return(
         <div className={"tutorialContainer"}>
-            <p className={"sectionTitle"}>
-                TUTORIALS
-            </p>
+            <div className={"sectionTitle"}>
+                <img src={'/img/tutorials.svg'} style={{marginRight: 14}}/>
+                <p>TUTORIALS</p>
+            </div>
             <div className={"tutorialBlockContainer"}>
                 {
                     tutorialsData &&

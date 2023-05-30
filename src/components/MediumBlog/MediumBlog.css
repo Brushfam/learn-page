@@ -1,24 +1,31 @@
 .mediumContainer {
     margin-top: 100px;
     margin-bottom: 50px;
-    width: 840px;
+    width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .sectionTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 100%;
+    border-bottom: 1px solid var(--ifm-toc-border-color);
+    margin-bottom: 20px;
+}
+
+.sectionTitle p {
     font-weight: 600;
     font-size: 24px;
-    border-bottom: 1px solid var(--ifm-toc-border-color);
-    margin-bottom: 40px;
+    margin-bottom: 0;
 }
 
 .mediumBlockContainer {
     display: grid;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -28,19 +35,28 @@
 }
 
 .mediumBlock {
-    width: 400px;
-    height: 120px;
-    padding: 16px 12px;
-    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 3px;
+    width: 390px;
+    height: 234px;
+    border: 1px solid var(--ifm-toc-border-color);
+    border-radius: 6px;
 }
 
 .mediumBlock:hover {
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     cursor: pointer;
+}
+
+.descriptionBlock {
+    background: #1F2526;
+    border-top: 1px solid #383939;
+    height: 113px;
+    padding: 20px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .articleTitle {
@@ -53,7 +69,6 @@
 
 .articleDate {
     position: absolute;
-    left: 12px;
     bottom: 20px;
     font-weight: 400;
     font-size: 12px;

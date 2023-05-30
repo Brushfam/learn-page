@@ -21,32 +21,35 @@ export const MediumBlog = () => {
         loadArticles();
     }, [max_articles]);
 
-    console.log(articles)
-
     return(
         <div className={"mediumContainer"}>
-            <p className={"sectionTitle"}>
-                ARTICLES
-            </p>
+            <div className={"sectionTitle"}>
+                <img src={'/img/articles.svg'} style={{marginRight: 14}}/>
+                <p>ARTICLES</p>
+            </div>
 
             <div className={"mediumBlockContainer"}>
             {articles
-                ? articles.map((item) => (
+                ? articles.map((item, i) => (
                         item.title.slice(0,2) !== "Як" ?
                             <a
                                 href={item.link}
                                 target="_blank"
                                 title={item.title}
                                 aria-label={item.title}
-                                key={item.link}
+                                key={i.toString()}
                             >
+
                                 <div className={"mediumBlock"}>
-                                    <p className={"articleTitle"}>
-                                        {item.title.replace("&amp;", "&")}
-                                    </p>
-                                    <p className={"articleDate"}>
-                                        {item.pubDate.slice(0,10)}
-                                    </p>
+                                    <img src={item.thumbnail} style={{padding: 0}} alt={item.title}/>
+                                    <div className={"descriptionBlock"}>
+                                        <p className={"articleTitle"}>
+                                            {item.title.replace("&amp;", "&")}
+                                        </p>
+                                        <p className={"articleDate"}>
+                                            {item.pubDate.slice(0,10)}
+                                        </p>
+                                    </div>
                                 </div>
                             </a> : <></>
                 ))
