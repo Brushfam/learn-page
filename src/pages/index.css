@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 110px 20px 20px 20px;
+    /*padding: 110px 20px 20px 20px;*/
 }
 
 .learnMainContainer .navbar__toggle {
@@ -22,26 +22,32 @@
 }
 
 .learnHeaderContainer {
+    padding: 132px 0;
+    width: 100%;
+    background: url("/img/banner-bg.png");
+    background-size: cover;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 
 .learnHeaderText {
-    width: 840px;
+    width: 800px;
 }
 
 .learnHeaderTitle {
     font-weight: 700;
     font-size: 44px;
     line-height: 120%;
-    margin-bottom: 20px;
 }
 
 .learnHeaderDescription {
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
+    margin-bottom: 0;
 }
 
 

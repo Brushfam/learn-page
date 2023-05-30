@@ -31,7 +31,7 @@ html[data-theme='light'] {
 
 html[data-theme='dark'] {
   --ifm-background-color: #121516;
-  --ifm-toc-border-color: #43494d;
+  --ifm-toc-border-color: #43494D;
   --ifm-navbar-background-color: #121516;
   --ifm-footer-background-color: #121516;
   --ifm-color-primary: #4277FF;
@@ -99,4 +99,6 @@ html button {
 [class*='backToTopButton'] {
   display: none !important;
 }
+
+
 

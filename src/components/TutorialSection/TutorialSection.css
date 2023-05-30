@@ -1,44 +1,58 @@
 .tutorialContainer {
     margin-top: 100px;
-    width: 840px;
+    width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .sectionTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 100%;
+    border-bottom: 1px solid var(--ifm-toc-border-color);
+    margin-bottom: 20px;
+}
+
+.sectionTitle p {
     font-weight: 600;
     font-size: 24px;
-    border-bottom: 1px solid var(--ifm-toc-border-color);
-    margin-bottom: 40px;
+    margin-bottom: 0;
 }
 
 .tutorialBlockContainer {
     display: grid;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.tutorialBlockContainer a {
+.tutorialBlockWrapper {
+    width: 394px;
+    height: 122px;
+}
+
+.tutorialBlockWrapper a {
     color: #ffffff;
     text-decoration: none;
 }
 
 .tutorialBlock {
-    width: 400px;
-    height: 90px;
+    width: 390px;
+    height: 112px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 3px;
+    border: 1px solid var(--ifm-toc-border-color);
+    border-radius: 6px;
+    transition: margin-top ease 0.4s;
 }
 
 .tutorialBlock:hover {
-    border: 1px solid rgba(255, 255, 255, 1);
+    margin-top: -10px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
     cursor: pointer;
 }
 
@@ -64,9 +78,14 @@
 
 @media(max-width: 460px) {
     .tutorialBlock {
-        width: 260px;
-        height: auto;
-        padding: 10px;
+        width: 300px;
+        height: 80px;
+        padding: 14px;
+    }
+
+    .tutorialBlockWrapper {
+        width: 304px;
+        height: 90px;
     }
 
     .tutorialTitle {
