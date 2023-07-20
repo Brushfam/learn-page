@@ -3,19 +3,19 @@ sidebar_position: 5
 title: Loan contract
 ---
 
-In our project we will also implement [PSP34](/docs/OpenBrush/smart-contracts/PSP34) 
-token. This token will represent a loan of a user who borrowed some assets. 
-Upon borrowing assets the contract will mint an NFT to them, which will hold 
-the information about their loan, namely the user who borrowed the assets, 
-address of the asset which was used as collateral, how much collateral was 
-deposited, what asset was borrowed, and how much, the liquidation price of 
-the loan, timestamp of when was the loan performed, and information whether 
-the loan is liquidated or not. This data will be stored in a separate storage 
-trait, which we will derive in our NFT contract. We do this to separate storage 
-from the logic, and we will do this in the lending contract as well. 
-We do not want anybody to just mint and burn these, so we will implement 
-the [Ownable](/docs/OpenBrush/smart-contracts/ownable) extension in our NFT. The mint and burn 
-logic will be covered differently, we will not be using the mintable and 
+In our project we will also implement [PSP34](../PSP34/psp34.md)
+token. This token will represent a loan of a user who borrowed some assets.
+Upon borrowing assets the contract will mint an NFT to them, which will hold
+the information about their loan, namely the user who borrowed the assets,
+address of the asset which was used as collateral, how much collateral was
+deposited, what asset was borrowed, and how much, the liquidation price of
+the loan, timestamp of when was the loan performed, and information whether
+the loan is liquidated or not. This data will be stored in a separate storage
+trait, which we will derive in our NFT contract. We do this to separate storage
+from the logic, and we will do this in the lending contract as well.
+We do not want anybody to just mint and burn these, so we will implement
+the [Ownable](../ownable.md) extension in our NFT. The mint and burn
+logic will be covered differently, we will not be using the mintable and
 burnable extensions.
 
 The `LoanContract` will contain several methods defined in the `Loan` trait.
@@ -28,7 +28,7 @@ in the body of the contract.
 In the `traits/loan.rs`, we will define a `Loan` trait.
 That trait contains three super traits: `PSP34`, `PSP34Metadata`, and `Ownable`.
 Also, the trait contains several methods, and the definition of the `LoanInfo`
-(that structure is used during interacting with the contract 
+(that structure is used during interacting with the contract
 so it is defined in the `traits` instead of the body of the contract).
 `LoanRef` can be used by other developers to do a cross contract call to `LoanContract`.
 
@@ -99,41 +99,41 @@ pub trait Loan: PSP34 + PSP34Metadata + Ownable {
 
 ## Add dependencies
 
-In addition to the dependencies imported in the [PSP34](/docs/OpenBrush/smart-contracts/PSP34)
+In addition to the dependencies imported in the [PSP34](../PSP34/psp34.md)
 documentation, we will also add the `ownable` dependency the same way as in the
-[ownable](/docs/OpenBrush/smart-contracts/ownable) documentation. We will be using `LoanContract`
+[ownable](../ownable.md) documentation. We will be using `LoanContract`
 as a dependency in our lending contract to instantiate it. So we need to also add
 the `"rlib"` crate type to have the ability to import the `LoanContract` as a dependency.
 
 ## Implement the contract
 
-We want a basic [PSP34](/docs/OpenBrush/smart-contracts/PSP34) token with metadata and ownable extensions, 
+We want a basic [PSP34](../PSP34/psp34.md) token with metadata and ownable extensions,
 so we will add these to our contract. We will add a `openbrush::contract` macro to our contract and add some imports:
 
 ```rust
-#![cfg_attr(not(feature = "std"), no_std)]
-#![feature(min_specialization)]
+#![cfg_attr(not(feature = "std"), no_std, no_main)]
 
 /// This contract will represent the loan of a user
+#[openbrush::implementation(Ownable, PSP34, PSP34Metadata)]
 #[openbrush::contract]
 pub mod loan {
     use openbrush::traits::String;
     use lending_project::traits::loan::*;
     use openbrush::{
-        contracts::{
-            ownable::*,
-            psp34::extensions::metadata::*,
-        },
         modifiers,
         storage::Mapping,
         traits::Storage,
     };
 ```
 
+> *Note*: If some default OpenBrush implementation is added to contract as a part of `#[openbrush::implementation]` macro, you
+> don't have to add imports on your module. For example, if you add `PSP34` to your contract, you don't have to add
+> `use openbrush::traits::psp34::*;` to your module.
+
 ## Define the storage
 
-We will derive the storage traits related to `PSP34`, `PSP34Metadata`, and 
-`Ownable` and declare the fields related to these traits. Also, we will declare 
+We will derive the storage traits related to `PSP34`, `PSP34Metadata`, and
+`Ownable` and declare the fields related to these traits. Also, we will declare
 fields related to `Loan` itself.
 
 ```rust
@@ -158,22 +158,19 @@ pub struct LoanContract {
 
 ## Implement the extension traits
 
-We will be using these extensions in our NFT token, so we will implement them for our storage.
+We will be using these extensions in our NFT token, so we will implement them inside `#[openbrush::implementation]` macro.
 
 ```rust
-// Implement PSP34 Trait for our NFT
-impl PSP34 for LoanContract {}
-
-// Implement Ownable Trait for our NFT
-impl Ownable for LoanContract {}
-
-// Implement PSP34Metadata Trait for our NFT
-impl PSP34Metadata for LoanContract {}
+#[openbrush::implementation(Ownable, PSP34, PSP34Metadata)]
+#[openbrush::contract]
+mod contract {
+    ...
+}
 ```
 
 ## Implement the Loan trait
 
-We will implement the `Loan` trait. 
+We will implement the `Loan` trait.
 All functions except one are restricted by the `only_owner` modifier.
 
 ```rust
@@ -247,7 +244,7 @@ impl LoanContract {
             String::from("L-NFT"),
         );
         instance._init_with_owner(Self::env().caller());
-        
+
         instance
     }
 

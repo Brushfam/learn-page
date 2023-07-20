@@ -13,17 +13,17 @@ We suggest using that structure during development for the following reasons:
 
 The project will contain the following directories:
 - `traits` - contains all traits(interfaces) of the contracts developed in the project.
-Traits describe the functionality of each contract and allow to do cross-contracts calls
-without knowledge about the implementation(no need to import the contract, using a trait is enough).
-- `impls` - contains the implementations of traits for the contracts. 
-If the contract contains several simple functions, better to implement 
-them in the body of the contract. But if the contract contains a lot of logic
-and methods, better to move(and maybe split on parts) the implementation to that directory.
-Better to store the implementation of one contract in its own directory and not mix it with others.
-- `contracts` - contains the bodies of the contracts. Each contract should be defined 
-in its own crate(it is a rule of the ink!). Each folder in that directory is a 
-crate(contract). These contracts can have the implementation inside themselves 
-or they can import the implementation from `impls`.
+  Traits describe the functionality of each contract and allow to do cross-contracts calls
+  without knowledge about the implementation(no need to import the contract, using a trait is enough).
+- `impls` - contains the implementations of traits for the contracts.
+  If the contract contains several simple functions, better to implement
+  them in the body of the contract. But if the contract contains a lot of logic
+  and methods, better to move(and maybe split on parts) the implementation to that directory.
+  Better to store the implementation of one contract in its own directory and not mix it with others.
+- `contracts` - contains the bodies of the contracts. Each contract should be defined
+  in its own crate(it is a rule of the ink!). Each folder in that directory is a
+  crate(contract). These contracts can have the implementation inside themselves
+  or they can import the implementation from `impls`.
 
 In that structure `traits` and `impls` directories are the parts of on `PROJECT_NAME` crate.
 Each contract in the `contracts` directory imports the crate `PROJECT_NAME` and use it inside.
@@ -31,36 +31,36 @@ Each contract in the `contracts` directory imports the crate `PROJECT_NAME` and 
 Based on the rules above the structure will look like the following:
 ```shell
 ├── traits
-│   ├── lending.rs
-│   ├── loan.rs
-│   ├── mod.rs
-│   ├── shares.rs
-│   └── stable_coin.rs
+│   ├── lending.rs
+│   ├── loan.rs
+│   ├── mod.rs
+│   ├── shares.rs
+│   └── stable_coin.rs
 ├── impls
-│   ├── lending
-│   │   ├── data.rs
-│   │   ├── lending.rs
-│   │   ├── lending_permissioned.rs
-│   │   └── mod.rs
-│   └── mod.rs
+│   ├── lending
+│   │   ├── data.rs
+│   │   ├── lending.rs
+│   │   ├── lending_permissioned.rs
+│   │   └── mod.rs
+│   └── mod.rs
 ├── contracts
-│   ├── lending
-│   │   ├── Cargo.toml
-│   │   └── lib.rs
-│   ├── loan
-│   │   ├── Cargo.toml
-│   │   └── lib.rs
-│   ├── shares
-│   │   ├── Cargo.toml
-│   │   └── lib.rs
-│   └── stable_coin
-│       ├── Cargo.toml
-│       └── lib.rs
+│   ├── lending
+│   │   ├── Cargo.toml
+│   │   └── lib.rs
+│   ├── loan
+│   │   ├── Cargo.toml
+│   │   └── lib.rs
+│   ├── shares
+│   │   ├── Cargo.toml
+│   │   └── lib.rs
+│   └── stable_coin
+│       ├── Cargo.toml
+│       └── lib.rs
 ├── lib.rs
 ├── Cargo.toml
 ```
 
-`traits` directory contains 4 traits with logic from the [overview](/docs/OpenBrush/smart-contracts/example/overview).
+`traits` directory contains 4 traits with logic from the [overview](overview.md).
 In the example:
 - `LendingContract` is a big contract and we moved the main logic into `impls/lending` folder. That logic is split into two traits(`Lending` and `LendingPermissione`) to show how it can be done.
 - `LoanContract` contains few methods, so the implementation is defined directly in the body of the contract.
