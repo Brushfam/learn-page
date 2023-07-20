@@ -7,11 +7,11 @@ title: Data and derive macro
 
 Rust doesn't have inheritance like OOP languages.
 If you want to "inherit" some fields, you can use structural composition.
-If you want to "inherit" some implementation, you can use traits. 
+If you want to "inherit" some implementation, you can use traits.
 Traits can have a [default implementation](https://doc.rust-lang.org/book/ch10-02-traits.html#default-implementations) or a [generic implementation](https://doc.rust-lang.org/book/ch10-02-traits.html#using-trait-bounds-to-conditionally-implement-methods).
 The traits in Rust can't contain fields, it is pure interfaces.
 
-Based on that information we propose you the following concept of smart contract 
+Based on that information we propose you the following concept of smart contract
 development:
 
 ### Storage trait
@@ -31,20 +31,13 @@ pub trait PointStorage {
 Or you can use `openbrush::traits::Storage` trait from OpenBrush.
 
 `Storage` is a generic trait, so you can use it to work with different storage.
-For example, if in your default implementation you need to have `psp22::extensions::metadata::Data` and `psp22::Data`, 
+For example, if in your default implementation you need to have `psp22::extensions::metadata::Data` and `psp22::Data`,
 you can add bounds `T: Storage<metadata::Data> + Storage<psp22::Data>`.
 It allows you to work with two independent storage.
 
-`openbrush::traits::Storage` trait requires that the inner data implements the 
-`openbrush::traits::OccupyStorage` trait. 
-It is because each storage in the smart contract should occupy a unique storage key. 
-Overlapping of those keys can cause unexpected bugs. Derive macro provided by 
-OpenBrush to simplify the implementation of the `Storage` trait also checks that 
-the storage key from the `OccupyStorage ` trait is unique.
-
 ### Data of the trait
 
-That trait returns some data with fields that can be used in the implementation. 
+That trait returns some data with fields that can be used in the implementation.
 The data is a simple struct with fields. Later that struct can be embedded into the contract struct.
 ```rust
 pub struct PointData {
@@ -53,40 +46,39 @@ pub struct PointData {
 }
 ```
 
-If you want to use `openbrush::traits::Storage` then you also need to implement `openbrush::traits::OccupyStorage`
-with unique storage key.
+Also, you can use the `openbrush::storage_item` macro that implements that trait by default,
+and also prepare the storage to be upgradeable.
 
 ```rust
+#[openbrush::storage_item]
 pub struct PointData {
     pub x: u32,
     pub y: u32,
 }
-
-impl openbrush::traits::OccupyStorage for PointData {
-    // You can specify your unique key manually like `0x123` or you can use macro
-    const KEY: u32 = openbrush::storage_unique_key!(PointData);
-}
 ```
 
-Also, you can use the `openbrush::upgradeable_storage` macro that implements that trait by default,
-and also prepare the storage to be upgradeable.
-
+### Upgradeable struct
+For struct to be upgradeable, every field that is not Mapping or other lazy loaded type,
+it should be marked with `#[lazy]` attribute.
 ```rust
-#[openbrush::upgradeable_storage(openbrush::storage_unique_key!(PointData))]
+
+#[openbrush::storage_item]
 pub struct PointData {
+    #[lazy]
     pub x: u32,
+    #[lazy]
     pub y: u32,
 }
 ```
 
 ### Default implementation
 
-Define the default or generic implementation for your main trait with the restriction that `Self` 
+Define the default or generic implementation for your main trait with the restriction that `Self`
 should also implement storage trait.
 
-A default implementation:
+A default implementation with impl trait:
 ```rust
-pub trait Point: PointStorage {
+pub trait PointImpl: PointStorage {
     fn x(&self) -> u32 {
         PointStorage::get(self).x
     }
@@ -102,28 +94,13 @@ pub trait Point: PointStorage {
 ```
 or a generic implementation:
 ```rust
-#![feature(min_specialization)]
 
-pub trait Point {
+pub trait Point: PointImpl {
     fn x(&self) -> u32;
 
     fn y(&self) -> u32;
 
     fn name(&self) -> String;
-}
-
-impl<T: PointStorage> Point for T {
-    default fn x(&self) -> u32 {
-        PointStorage::get(self).x
-    }
-
-    default fn y(&self) -> u32 {
-        PointStorage::get(self).y
-    }
-
-    default fn name(&self) -> String {
-        "AlphaPoint".to_string()
-    }
 }
 ```
 
@@ -145,7 +122,6 @@ pub trait Point: openbrush::traits::Storage<PointData> {
 ```
 or a generic implementation with `openbrush::traits::Storage`:
 ```rust
-#![feature(min_specialization)]
 
 pub trait Point {
     fn x(&self) -> u32;
@@ -154,25 +130,11 @@ pub trait Point {
 
     fn name(&self) -> String;
 }
-
-impl<T: openbrush::traits::Storage<PointData>> Point for T {
-    default fn x(&self) -> u32 {
-        self.data().x
-    }
-
-    default fn y(&self) -> u32 {
-        self.data().y
-    }
-
-    default fn name(&self) -> String {
-        "AlphaPoint".to_string()
-    }
-}
 ```
 
 ### "Inheritance" of the implementation
 
-When someone wants to "inherit" implementation and fields, he can embed the data structure, 
+When someone wants to "inherit" implementation and fields, he can embed the data structure,
 implement the storage trait, and define an impl section of the main trait:
 ```rust
 struct PointContract {
@@ -188,11 +150,27 @@ impl PointStorage for PointContract {
     }
 }
 
-impl Point for PointContract {}
+impl PointImpl for PointContract {}
+
+impl Point for PointContract {
+    #[ink(message)]
+    fn x(&self) -> u32 {
+        PointImpl::x(self)
+    }
+    
+    #[ink(message)]
+    fn y(&self) -> u32 {
+        PointImpl::y(self)
+    }
+    
+    #[ink(message)]
+    fn name(&self) -> String {
+        PointImpl::name(self)
+    }
+}
 ```
 
-If you are using `openbrush::traits::Storage` and your data implements `openbrush::traits::OccupyStorage`
-trait, then you can use derive macro to automate the implementation of the trait.
+If you are using `openbrush::traits::Storage` trait, then you can use derive macro to automate the implementation of the trait.
 Each field for which you want to implement the `Storage` trait should be marked with `#[storage_field]`.
 
 ```rust
@@ -203,6 +181,4 @@ struct PointContract {
     #[storage_field]
     point: PointData,
 }
-
-impl Point for PointContract {}
 ```

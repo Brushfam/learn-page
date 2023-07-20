@@ -3,19 +3,19 @@ sidebar_position: 10
 title: Notes about methods
 ---
 
-In this section, we describe the implementation of the functions of our lending 
+In this section, we describe the implementation of the functions of our lending
 contract.
 
 ## Instantiating contracts
 
-Each asset that we will accept to be lent will have two underlying tokens: 
-the shares token and the reserves token. The shares token will represent a 
-user's share of the lent asset which they can then withdraw and the reserves 
-token will represent the amount of asset lent since we don't want to keep 
-track of all addresses and amounts which have borrowed the assets. We will 
-simply take this amount from the total supply of the underlying reserve token. 
-So when we are accepting an asset for lending, we need to create a new token 
-contract for shares and for reserves. We will define an internal function for 
+Each asset that we will accept to be lent will have two underlying tokens:
+the shares token and the reserves token. The shares token will represent a
+user's share of the lent asset which they can then withdraw and the reserves
+token will represent the amount of asset lent since we don't want to keep
+track of all addresses and amounts which have borrowed the assets. We will
+simply take this amount from the total supply of the underlying reserve token.
+So when we are accepting an asset for lending, we need to create a new token
+contract for shares and for reserves. We will define an internal function for
 this:
 
 ```rust
@@ -23,7 +23,7 @@ fn _instantiate_shares_contract(&self, contract_name: &str, contract_symbol: &st
     let code_hash = self.lending.shares_contract_code_hash;
     let salt = (<Self as DefaultEnv>::env().block_timestamp(), contract_name).encode();
     let hash = xxh32(&salt, 0).to_le_bytes();
-    
+
     let contract =
         SharesContractRef::new(Some(String::from(contract_name)), Some(String::from(contract_symbol)))
             .endowment(0)
@@ -35,21 +35,21 @@ fn _instantiate_shares_contract(&self, contract_name: &str, contract_symbol: &st
 }
 ```
 
-This function will instantiate our `SharesContract` contract and return 
-the `AccountId` of the instantiated contract. We will call this function 
+This function will instantiate our `SharesContract` contract and return
+the `AccountId` of the instantiated contract. We will call this function
 when allowing assets.
 
 ## Simulating oracle
 
-As mentioned before, we will not be using a price oracle in our example, 
-but we will use our own simulated oracle. And by simulated we mean adding 
-some storage fields which hold the info about price of an asset and a function 
-only callable by the account with `MANAGER` role, which will set the price of 
+As mentioned before, we will not be using a price oracle in our example,
+but we will use our own simulated oracle. And by simulated we mean adding
+some storage fields which hold the info about price of an asset and a function
+only callable by the account with `MANAGER` role, which will set the price of
 the asset. For that we define these functions:
 
 ```rust
 #[modifiers(only_role(MANAGER))]
-default fn set_asset_price(
+fn set_asset_price(
     &mut self,
     asset_in: AccountId,
     asset_out: AccountId,
@@ -62,8 +62,8 @@ default fn set_asset_price(
 /// this internal function will be used to set price of `asset_in` when we deposit `asset_out`
 /// we are using this function in our example to simulate an oracle
 pub fn set_asset_price<T>(instance: &mut T, asset_in: &AccountId, asset_out: &AccountId, price: &Balance)
-where
-    T: Storage<Data>,
+    where
+        T: Storage<Data>,
 {
     instance.data().asset_price.insert(&(asset_in, asset_out), price);
 }
@@ -71,21 +71,21 @@ where
 
 ## Allowing assets
 
-If we just started lending and borrowing random assets or using random assets 
-as collateral there would be chaos in our smart contract. 
-Regarding lending, it would not be a big problem, since if somebody is 
-willing to borrow an asset, it would generate a profit for the lender. 
-But if we started accepting random assets as collateral, anyone could just 
-throw a random coin as collateral and then just for example rug pull it and 
-also keep the borrowed assets. Because of this we will only accept certain 
-assets for lending and using as collateral. For an asset to be accepted, an 
-account with the `MANAGER` role needs to allow it with the `allow_asset` function. 
-We will use a modifier from OpenBrush, which serves similarly to Solidity's 
+If we just started lending and borrowing random assets or using random assets
+as collateral there would be chaos in our smart contract.
+Regarding lending, it would not be a big problem, since if somebody is
+willing to borrow an asset, it would generate a profit for the lender.
+But if we started accepting random assets as collateral, anyone could just
+throw a random coin as collateral and then just for example rug pull it and
+also keep the borrowed assets. Because of this we will only accept certain
+assets for lending and using as collateral. For an asset to be accepted, an
+account with the `MANAGER` role needs to allow it with the `allow_asset` function.
+We will use a modifier from OpenBrush, which serves similarly to Solidity's
 function modifiers. The function will look like this:
 
 ```rust
 #[modifiers(only_role(MANAGER))]
-default fn allow_asset(&mut self, asset_address: AccountId) -> Result<(), LendingError> {
+fn allow_asset(&mut self, asset_address: AccountId) -> Result<(), LendingError> {
     // we will ensure the asset is not accepted already
     if self.is_accepted_lending(asset_address) {
         return Err(LendingError::AssetSupported)
@@ -104,22 +104,22 @@ default fn allow_asset(&mut self, asset_address: AccountId) -> Result<(), Lendin
 
 ## Lending assets
 
-For lending the assets  we will use the function `lend_assets(asset_address, amount)`, 
-where `asset_address` is the address of `PSP22` we want to deposit and `amount` 
-is the amount of asset deposited. Some checks need to be checked to assure the correct 
-behavior of our contract. The asset deposited needs to be recognized by our contract 
-(manager must have approved it). If it is not accepted, an error will be returned. 
-Then the user must have approved the asset to spent by our contract and the user's 
-balance must be greater than or equal to `amount`. So we will transfer the asset from 
-the user to the contract, mint shares to the user. To perform a cross contract call 
-we will be using the references to contracts `SharesRef`. 
-We will also add `when_not_paused` modifier to this function, 
-so it can be only called when the contract is not paused. 
+For lending the assets  we will use the function `lend_assets(asset_address, amount)`,
+where `asset_address` is the address of `PSP22` we want to deposit and `amount`
+is the amount of asset deposited. Some checks need to be checked to assure the correct
+behavior of our contract. The asset deposited needs to be recognized by our contract
+(manager must have approved it). If it is not accepted, an error will be returned.
+Then the user must have approved the asset to spent by our contract and the user's
+balance must be greater than or equal to `amount`. So we will transfer the asset from
+the user to the contract, mint shares to the user. To perform a cross contract call
+we will be using the references to contracts `SharesRef`.
+We will also add `when_not_paused` modifier to this function,
+so it can be only called when the contract is not paused.
 The code will look like this:
 
 ```rust
 #[modifiers(when_not_paused)]
-default fn lend_assets(&mut self, asset_address: AccountId, amount: Balance) -> Result<(), LendingError> {
+fn lend_assets(&mut self, asset_address: AccountId, amount: Balance) -> Result<(), LendingError> {
     // we will be using these often so we store them in variables
     let lender = Self::env().caller();
     let contract = Self::env().account_id();
@@ -155,40 +155,40 @@ default fn lend_assets(&mut self, asset_address: AccountId, amount: Balance) -> 
 
 ## Borrowing assets
 
-The `borrow_assets(asset_address, collateral_address, amount)` function will 
-serve for the users to borrow assets from the smart contract. 
-`asset_address` is the account id of the asset we want to borrow, 
-`collateral_address` is the account id of asset which the user wants 
-to use as collateral, and `amount` is the amount of collateral deposited. 
-Our contract will calculate the value of the deposited collateral and 
-will give the borrower 70% of the collateral value. For pricing, we would 
-use an oracle, but in this example, we will use our 'simulated oracle' - 
-we will just store the price info in our contract and the admin will 
-be able to change it. The liquidation price of the loan will be calculated 
-at 75% of the collateral value. First of all the contract must not be paused, 
-for which we use modifier `when_not_paused`. After that, for the borrowing 
-to succeed, the `collateral_address` must be accepted by the contract, 
-the contract needs to have enough allowance to spend the borrower's collateral 
-token, borrower's collateral balance must be equal to or greater than `amount` 
-and finally, the `asset_address` must be accepted for borrowing in the 
-smart contract. After we calculate the liquidation price and borrow amount, 
-we ensure the contract has enough assets to provide for the borrower, 
-and we also want the liquidation price of the collateral to be higher than 
-the borrowed amount. Since we are dealing with integers, entering a very 
-low amount (below 10) of collateral may result in the liquidation price being 
-the same as the borrowed amount, which could be exploited. We can surely 
-handle it in many different ways, but again, it is not the purpose of this 
-example so we will deal with it this way. When everything is alright, we will 
-transfer the collateral to the contract, mint an NFT, which stores the 
-information about the loan, to the borrower, then transfer the asset to the 
-borrower, and finally, mint the reserve token. We will mint the same amount 
-that we lent, and we will burn it after the loan is repaid or liquidated. 
-This reserve token will be used to track the amount of the asset which is 
+The `borrow_assets(asset_address, collateral_address, amount)` function will
+serve for the users to borrow assets from the smart contract.
+`asset_address` is the account id of the asset we want to borrow,
+`collateral_address` is the account id of asset which the user wants
+to use as collateral, and `amount` is the amount of collateral deposited.
+Our contract will calculate the value of the deposited collateral and
+will give the borrower 70% of the collateral value. For pricing, we would
+use an oracle, but in this example, we will use our 'simulated oracle' -
+we will just store the price info in our contract and the admin will
+be able to change it. The liquidation price of the loan will be calculated
+at 75% of the collateral value. First of all the contract must not be paused,
+for which we use modifier `when_not_paused`. After that, for the borrowing
+to succeed, the `collateral_address` must be accepted by the contract,
+the contract needs to have enough allowance to spend the borrower's collateral
+token, borrower's collateral balance must be equal to or greater than `amount`
+and finally, the `asset_address` must be accepted for borrowing in the
+smart contract. After we calculate the liquidation price and borrow amount,
+we ensure the contract has enough assets to provide for the borrower,
+and we also want the liquidation price of the collateral to be higher than
+the borrowed amount. Since we are dealing with integers, entering a very
+low amount (below 10) of collateral may result in the liquidation price being
+the same as the borrowed amount, which could be exploited. We can surely
+handle it in many different ways, but again, it is not the purpose of this
+example so we will deal with it this way. When everything is alright, we will
+transfer the collateral to the contract, mint an NFT, which stores the
+information about the loan, to the borrower, then transfer the asset to the
+borrower, and finally, mint the reserve token. We will mint the same amount
+that we lent, and we will burn it after the loan is repaid or liquidated.
+This reserve token will be used to track the amount of the asset which is
 currently borrowed.
 
 ```rust
 #[modifiers(when_not_paused)]
-default fn borrow_assets(
+fn borrow_assets(
     &mut self,
     asset_address: AccountId,
     collateral_address: AccountId,
