@@ -167,8 +167,6 @@ pub struct Data {
 
 ## Constructor and initialization
 
-### Disclaimer
-
 The following information describes `Proxy` and `Diamond` patterns of upgradeable storage.
 
 Uploading your contract on the blockchain with `contract-pallet` has two phases:
@@ -352,9 +350,6 @@ Better to have an upgradeable storage layout, initialization function for new ve
 of your contract, permission system, etc.
 
 ### The `Diamond` Standard
-
-### Disclaimer
-Right now, you can't use diamond standard in OpenBrush because of the problems with delegate calls.
 
 Using `Diamond` Standard you can add support for several facets(logic layers) that
 can be upgraded. [This standard](https://eips.ethereum.org/EIPS/eip-2535) came
