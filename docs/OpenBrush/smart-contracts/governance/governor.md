@@ -1,9 +1,11 @@
 ---
 sidebar_position: 1
-title: PSP22
+title: Governance
 ---
-
-This example shows how you can reuse the implementation of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/contracts/src/governance) token. Also, this example shows how you can customize the logic, for example, to reject transferring tokens to `hated_account`.
+This feature provides a governance mechanism. It allows token holders to vote on proposals and change the token's parameters.
+Everybody who has enough votes can create a proposal to call a method of some contract with some arguments. Then token holders can vote for, against the proposal, or abstain.
+When the voting period ends, the proposal can be executed if the proposal status is `Succeeded` and the quorum is reached or declined otherwise.
+This example shows how you can use the implementation of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/contracts/src/governance) token. 
 
 ## Step 1: Import default implementation
 
@@ -15,7 +17,7 @@ The main trait is `Governor`.
 
 ## Step 2: Define constructor
 
-Define constructor where you initialize required extentions [GovernorVotes](), [GovernorSettings]() and [GovernorQuorum]().
+Define constructor where you initialize required extensions [GovernorVotes](Extensions/votes.md), [GovernorSettings](Extensions/settings.md) and [GovernorQuorum](Extensions/quorum.md).
 
 ```rust
 impl Contract {
@@ -30,8 +32,7 @@ impl Contract {
         let mut instance = Self::default();
 
         let caller = Self::env().caller();
-        access_control::Internal::_init_with_admin(&mut instance, Some(caller));
-
+        
         instance._init_governor_votes(token).unwrap();
         instance
             ._init_governor_settings(voting_delay, voting_period, proposal_threshold)
@@ -44,7 +45,7 @@ impl Contract {
 }
 ```
 ## Step 3: Set up your Storage
-It should have all fields for [Governance]() and required extensions: [GovernorVotes](), [GovernorSettings](), [GovernorCounting](), [Quorum](), [Nonces](), [Votes]().
+It should have all fields for [Governor](/) and required extensions: [GovernorVotes](Extensions/votes.md), [GovernorSettings](Extensions/settings.md), [GovernorCounting](Extensions/counting.md), [GovernorQuorum](Extensions/quorum.md), [Nonces]().
 ```rust
 #[ink(storage)]
     #[derive(Default, Storage)]
@@ -61,16 +62,14 @@ It should have all fields for [Governance]() and required extensions: [GovernorV
         settings: governor_settings::Data,
         #[storage_field]
         quorum: governor_quorum::Data,
-        #[storage_field]
-        votes: votes::Data,
     }
 ```
 
 
 ## Step 4: Make your PSP22Voting contract
 
-Make your PSP22Voting contract which will be used for voting. You can use [PSP22Votes]() for this purpose. 
-And then enter the address of this contract in the `token` field of the constructor. You can check our [PSP22Votes]() contract example.
+Make your PSP22Voting contract which will be used for voting. You can use [PSP22Votes](../PSP22/Extensions/votes.md) for this purpose. 
+And then enter the address of this contract in the `token` field of the constructor. You can check our [PSP22Votes](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/psp22_extensions/votes) contract example.
 
 
 You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance).
