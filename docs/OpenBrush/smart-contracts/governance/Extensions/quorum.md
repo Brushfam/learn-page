@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
-title: GovernorSettings
+title: GovernorQuorum
 ---
 This extension gives Governor contract the ability to manage how quorum is calculated.
 There are two parameters that affect quorum calculation: `quorum_numerator` and `quorum_denominator`.
 Quorum is calculated as `quorum_numerator * total_votes / quorum_denominator`. 
 Of course, the value of total votes is not constant, it changes with every vote.
-So, the quorum calculates in specific moments of time. It is possible because all votes are stored in checkpoints structure, 
+So, the quorum calculates in specific moments of time. It is possible because all votes are stored in [checkpoints]() structure, 
 that is updated every time when a vote is created or changed.
 
 This page describes how to connect GovernorQuorum to Governor contract.
@@ -45,15 +45,15 @@ GovernorQuorum field in your Storage should be named `quorum` and have type `gov
 It stores the history of quorum numerator changes.
 ```rust
 #[ink(storage)]
-    #[derive(Default, Storage)]
-    pub struct Contract {
-        ...
-        #[storage_field]
-        quorum: governor_quorum::Data,
-        ...
-    }
+#[derive(Default, Storage)]
+pub struct Contract {
+    ...
+    #[storage_field]
+    quorum: governor_quorum::Data,
+    ...
+}
 ```
 
 That's it! Now you can use [GovernorQuorum](/) extension in your [Governor](../governor.md) contract.
 
-You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance).
+You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance/governor).

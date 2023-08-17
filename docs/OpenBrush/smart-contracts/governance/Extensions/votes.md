@@ -40,17 +40,17 @@ GovernorVotes field in your Storage should be named `governor_votes` and have ty
 It stores the address of [PSP22Votes](../../PSP22/Extensions/votes.md) token.
 ```rust
 #[ink(storage)]
-    #[derive(Default, Storage)]
-    pub struct Contract {
-        ...
-        #[storage_field]
-        governor_votes: governor_votes::Data,
-        ...
-    }
+#[derive(Default, Storage)]
+pub struct Contract {
+    ...
+    #[storage_field]
+    governor_votes: governor_votes::Data,
+    ...
+}
 ```
 
 
 That's it! Now you can use [GovernorVotes](/) extension in your [Governor](../governor.md) contract.
 
 
-You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance).
+You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance/governor).

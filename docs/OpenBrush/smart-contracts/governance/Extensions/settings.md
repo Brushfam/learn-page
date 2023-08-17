@@ -44,17 +44,17 @@ GovernorSettings field in your Storage should be named `settings` and have type 
 It stores the values of voting delay, voting period, proposal threshold.
 ```rust
 #[ink(storage)]
-    #[derive(Default, Storage)]
-    pub struct Contract {
-        ...
-        #[storage_field]
-        governor_votes: governor_votes::Data,
-        ...
-    }
+#[derive(Default, Storage)]
+pub struct Contract {
+    ...
+    #[storage_field]
+    governor_votes: governor_votes::Data,
+    ...
+}
 ```
 
 
 That's it! Now you can use [GovernorSettings](/) extension in your [Governor](../governor.md) contract.
 
 
-You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance).
+You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance/governor).

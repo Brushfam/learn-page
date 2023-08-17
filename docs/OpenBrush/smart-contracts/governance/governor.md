@@ -70,4 +70,4 @@ Make your PSP22Voting contract which will be used for voting. You can use [PSP22
 And then enter the address of this contract in the `token` field of the constructor. You can check our [PSP22Votes](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/psp22_extensions/votes) contract example.
 
 
-You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance).
+You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance/governor).

@@ -13,16 +13,16 @@ This page describes how to create your own [PSP22Votes](/) contract.
 
 First, you should implement basic version of [PSP22](../psp22.md).
 
-With [default `Cargo.toml`](../overview.md/#the-default-toml-of-your-project-with-openbrush),
+With [default `Cargo.toml`](../../overview.md/#the-default-toml-of-your-project-with-openbrush),
 you need to enable `PSP22Votes` feature, embed modules data structures and implement them via `#[openbrush::implementation]` macro
-as described in [that section](../overview.md/#reuse-implementation-of-traits-from-openbrush).
+as described in [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush).
 
 
 
 
 ## Step 2: Set up your Storage
 It should add a `votes` field in your Storage. It should be named `votes` and have the type `votes::Data`.
-It stores information about delegations, checkpoints for each account, which stores the number of votes at a certain time, and the total number of votes, also at a certain time.
+It stores information about delegations, [checkpoints]() for each account, which stores the number of votes at a certain time, and the total number of votes, also at a certain time.
 Also, Storage should have a `nonces` field. It should be named `nonces` and have the type `nonces::Data`.
 It stores the number of nonces for each account. Nonce is a number that is incremented each time a user delegates tokens to another account by signature.
 ```rust
