@@ -45,7 +45,7 @@ impl Contract {
 }
 ```
 ## Step 3: Set up your Storage
-It should have all fields for [Governor](/) and required extensions: [GovernorVotes](Extensions/votes.md), [GovernorSettings](Extensions/settings.md), [GovernorCounting](Extensions/counting.md), [GovernorQuorum](Extensions/quorum.md), [Nonces]().
+It should have all fields for [Governor](/) and required extensions: [GovernorVotes](Extensions/votes.md), [GovernorSettings](Extensions/settings.md), [GovernorCounting](Extensions/counting.md), [GovernorQuorum](Extensions/quorum.md).
 ```rust
 #[ink(storage)]
     #[derive(Default, Storage)]
@@ -56,8 +56,6 @@ It should have all fields for [Governor](/) and required extensions: [GovernorVo
         governor_counting: governor_counting::Data,
         #[storage_field]
         governor_votes: governor_votes::Data,
-        #[storage_field]
-        nonces: nonces::Data,
         #[storage_field]
         settings: governor_settings::Data,
         #[storage_field]
