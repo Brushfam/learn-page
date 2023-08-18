@@ -8,16 +8,23 @@ Quorum is calculated as `quorum_numerator * total_votes / quorum_denominator`.
 Of course, the value of total votes is not constant, it changes with every vote.
 So, the quorum calculates in specific moments of time. It is possible because all votes are stored in [checkpoints]() structure, 
 that is updated every time when a vote is created or changed.
+Also, you can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance#GovernorQuorumFraction) in OpenZeppelin Contracts for more information about the quorum calculation mechanism.
 
-This page describes how to connect GovernorQuorum to Governor contract.
+This page describes how to connect [GovernorQuorum](/) to [Governor](../governor.md) contract.
 
 ## Step 1: Import default implementation
 
 With [default `Cargo.toml`](../../overview.md/#the-default-toml-of-your-project-with-openbrush),
-you need to enable `governance` feature, embed modules data structures and implement them via `#[openbrush::implementation]` macro
-as described in [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush).
-
-The main trait is `Governor`.
+you need to enable `governance` feature. Also, you need to use implementation macro
+for GovernorQuorum:
+```rust
+#[openbrush::implementation(..., GovernorQuorum, ...)]
+#[openbrush::contract]
+pub mod your_contract {
+    ...
+}
+```
+You can check [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
 
 ## Step 2: Include GovernorQuorum initialization in constructor
 
@@ -53,7 +60,6 @@ pub struct Contract {
     ...
 }
 ```
-
 That's it! Now you can use [GovernorQuorum](/) extension in your [Governor](../governor.md) contract.
 
 You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance/governor).

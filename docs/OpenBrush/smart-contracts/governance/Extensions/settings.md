@@ -5,17 +5,23 @@ title: GovernorSettings
 This extension gives Governor contract the ability to set and get settings of the contract.
 With this extension, you can set and get voting delay(The time between proposing and vote starting),
 voting period, proposal threshold(The amount of votes that need to propose a proposal).
+Also, you can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance#GovernorSettings) in OpenZeppelin Contracts for more information about the settings mechanism.
 
-This page describes how to connect GovernorSettings to Governor contract.
+This page describes how to connect [GovernorSettings](/) to [Governor](../governor.md) contract.
 
 ## Step 1: Import default implementation
 
 With [default `Cargo.toml`](../../overview.md/#the-default-toml-of-your-project-with-openbrush),
-you need to enable `governance` feature, embed modules data structures and implement them via `#[openbrush::implementation]` macro
-as described in [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush).
-
-The main trait is `Governor`.
-
+you need to enable `governance` feature. Also, you need to use implementation macro
+for GovernorSettings:
+```rust
+#[openbrush::implementation(..., GovernorSettings, ...)]
+#[openbrush::contract]
+pub mod your_contract {
+    ...
+}
+```
+You can check [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
 ## Step 2: Include GovernorSettings initialization in constructor
 
 We need to initialize [GovernorSettings](/) extension in the constructor of [Governor](../governor.md) contract.

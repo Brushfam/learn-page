@@ -5,15 +5,23 @@ title: Governance
 This feature provides a governance mechanism. It allows token holders to vote on proposals and change the token's parameters.
 Everybody who has enough votes can create a proposal to call a method of some contract with some arguments. Then token holders can vote for, against the proposal, or abstain.
 When the voting period ends, the proposal can be executed if the proposal status is `Succeeded` and the quorum is reached or declined otherwise.
-This example shows how you can use the implementation of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/contracts/src/governance) token. 
+This example shows how you can use the implementation of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/contracts/src/governance) token.  
+Also you can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance) in OpenZeppelin Contracts 
+for more information about the governance mechanism.
 
 ## Step 1: Import default implementation
 
 With [default `Cargo.toml`](../overview.md/#the-default-toml-of-your-project-with-openbrush),
-you need to enable `governance` feature, embed modules data structures and implement them via `#[openbrush::implementation]` macro
-as described in [that section](../overview.md/#reuse-implementation-of-traits-from-openbrush).
-
-The main trait is `Governor`.
+you need to enable `governance` feature. Also, you need to use implementation macro 
+for Governor and all required extensions:
+```rust
+#[openbrush::implementation(Governor, GovernorVotes, GovernorSettings, GovernorCounting, GovernorQuorum)]
+#[openbrush::contract]
+pub mod your_contract {
+    ...
+}
+```
+You can check [that section](../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
 
 ## Step 2: Define constructor
 

@@ -4,14 +4,25 @@ title: GovernorVotes
 ---
 This extension gives Governor contract the ability to communicate with [PSP22Votes](../../PSP22/Extensions/votes.md) token.
 The main purpose of this extension is to provide a way to check how much voting power a voter has.
+Also, it provides the ability to delegate tokens from one account to another for voting.
+You can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance#GovernorVotes) in OpenZeppelin Contracts for more information about the voting mechanism.
 
 This page describes how to connect [Governor](../governor.md) with [PSP22Votes](../../PSP22/Extensions/votes.md) token using [GovernorVotes](/) extension.
 
 ## Step 1: Import default implementation
 
 With [default `Cargo.toml`](../../overview.md/#the-default-toml-of-your-project-with-openbrush),
-you need to enable `governance` feature, embed modules data structures and implement them via `#[openbrush::implementation]` macro
-as described in [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush).
+you need to enable `governance` feature. Also, you need to use implementation macro
+for GovernorVotes:
+```rust
+#[openbrush::implementation(..., GovernorVotes, ...)]
+#[openbrush::contract]
+pub mod your_contract {
+    ...
+}
+```
+
+You can check [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
 
 The main trait is `Governor`.
 
