@@ -12,7 +12,8 @@ There are several methods to get the value from the checkpoint:
 - `latest` - Returns the value in the most recent checkpoint, or 0 if there are no checkpoints.
 - `latest_checkpoint` - Returns whether there is a checkpoint in the structure (i.e. it is not empty), and if so the key and value in the most recent checkpoint.
 
-This page describes how to use Checkpoints in your contract.
+This page describes how to use Checkpoints in your contract. For example, you want to save how total supply of your token changes over time.
+Then you can use Checkpoints to do it.
 
 ## Step 1: Import checkpoints module
 
@@ -21,7 +22,6 @@ use openbrush::utils::checkpoints::Checkpoints;
 ```
 
 ## Step 2: Add field in your Storage, that uses Checkpoints
-For example, you want to save how total supply of your token changes over time.
 Then you need to add a field in your Storage, that uses Checkpoints.
 ```rust
 #[ink(storage)]
@@ -33,6 +33,21 @@ pub struct Contract {
     ...
 }
 ```
+
+## Step 3: Use Checkpoints in your contract
+Modify all functions that change the value of total supply. For example, if you want to use Checkpoints to save the total supply of your token, you need to modify `_mint` function:
+```rust
+impl Contract {
+    ...
+    fn _mint(&mut self, to: &AccountId, amount: Balance) -> Result<(), Error> {
+        ...
+        self.total_supply_history.push(self.total_supply(), self.env().block_timestamp());
+        ...
+    }
+    ...
+}
+```
+
 
 That's it! Now you can use [Checkpoints](/) structure in your contract.
 

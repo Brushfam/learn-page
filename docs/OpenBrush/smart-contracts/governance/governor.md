@@ -3,8 +3,8 @@ sidebar_position: 1
 title: Governance
 ---
 This feature provides a governance mechanism. It allows token holders to vote on proposals and change the token's parameters.
-Everybody who has enough votes can create a proposal to call a method of some contract with some arguments. Then token holders can vote for, against the proposal, or abstain.
-When the voting period ends, the proposal can be executed if the proposal status is `Succeeded` and the quorum is reached or declined otherwise.
+Everybody who has enough votes can create a proposal to call a method of some contract with some arguments. Then token holders can vote for or against the proposal.
+When the voting period ends, the proposal can be executed if the proposal status is `Succeeded` and the quorum is reached. 
 This example shows how you can use the implementation of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/contracts/src/governance) token.  
 Also you can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance) in OpenZeppelin Contracts 
 for more information about the governance mechanism.
@@ -21,7 +21,7 @@ pub mod your_contract {
     ...
 }
 ```
-You can check [that section](../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
+You can check [this section](../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
 
 ## Step 2: Define constructor
 
@@ -74,8 +74,8 @@ It should have all fields for [Governor](/) and required extensions: [GovernorVo
 
 ## Step 4: Make your PSP22Voting contract
 
-Make your PSP22Voting contract which will be used for voting. You can use [PSP22Votes](../PSP22/Extensions/votes.md) for this purpose. 
-And then enter the address of this contract in the `token` field of the constructor. You can check our [PSP22Votes](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/psp22_extensions/votes) contract example.
+Make your PSP22Voting contract which will be used for voting. You can use [PSP22Votes](../PSP22/Extensions/votes.md) for this purpose.
+The AccountId of this token will then be used as a constructor parameter of this contract. You can check our [PSP22Votes](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/psp22_extensions/votes) contract example.
 
 
 You can check an example of the usage of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance/governor).

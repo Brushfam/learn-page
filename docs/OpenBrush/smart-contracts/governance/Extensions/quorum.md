@@ -48,8 +48,7 @@ impl Contract {
 }
 ```
 ## Step 3: Add GovernorQuorum field in your Storage
-GovernorQuorum field in your Storage should be named `quorum` and have type `governor_quorum::Data`.
-It stores the history of quorum numerator changes.
+Add a storage field of type `governor_quorum::Data`, which stores the history of quorum numerator changes.
 ```rust
 #[ink(storage)]
 #[derive(Default, Storage)]

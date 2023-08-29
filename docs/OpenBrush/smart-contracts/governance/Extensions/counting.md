@@ -4,7 +4,7 @@ title: GovernorCounting
 ---
 This extension gives Governor contract the ability to manage and count votes of the contract.
 You can see if a user has voted for a proposal, and get the number of votes for a proposal.
-Also, this extension provides the ability to count your votes when you cast them, to realize when the quorum is reached, and to realize when the voting is succeeded.
+Also, this extension allows you to count your votes when you cast them, to see when the quorum is reached, and when the voting succeeds.
 You can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance#GovernorCountingSimple) in OpenZeppelin Contracts for more information about the counting mechanism.
 
 This page describes how to connect [GovernorCounting](/) to [Governor](../governor.md) contract.
@@ -21,11 +21,10 @@ pub mod your_contract {
     ...
 }
 ```
-You can check [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
+You can check [this section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
 
 ## Step 2: Add GovernorCounting field in your Storage
-GovernorCounting field in your Storage should be named `governor_counting` and have type `governor_counting::Data`.
-It stores the number of votes for all proposals, and information about whether a user has voted for a proposal.
+Add a storage field of type `governor_counting::Data`, which stores the number of votes for all proposals, and information about whether a user has voted for a proposal.
 ```rust
 #[ink(storage)]
 #[derive(Default, Storage)]

@@ -22,7 +22,7 @@ pub mod your_contract {
 }
 ```
 
-You can check [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
+You can check [this section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
 
 The main trait is `Governor`.
 
@@ -47,8 +47,7 @@ impl Contract {
 }
 ```
 ## Step 3: Add GovernorVotes field in your Storage
-GovernorVotes field in your Storage should be named `governor_votes` and have type `governor_votes::Data`.
-It stores the address of [PSP22Votes](../../PSP22/Extensions/votes.md) token.
+Add a storage field of type `governor_votes::Data`, which stores the AccountId of [PSP22Votes](../../PSP22/Extensions/votes.md) token.
 ```rust
 #[ink(storage)]
 #[derive(Default, Storage)]

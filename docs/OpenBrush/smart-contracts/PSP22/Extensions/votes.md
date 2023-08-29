@@ -15,7 +15,7 @@ This page describes how to create your own [PSP22Votes](/) contract.
 First, you should implement basic version of [PSP22](../psp22.md).
 
 With [default `Cargo.toml`](../../overview.md/#the-default-toml-of-your-project-with-openbrush),
-you need to enable `governance` feature. Also, you need to use implementation macro
+you need to enable `governance` and `psp22` feature. Also, you need to use the implementation macro
 for PSP22Votes and Nonces:
 ```rust
 #[openbrush::implementation(..., PSP22Votes, Nonces, ...)]
@@ -25,14 +25,12 @@ pub mod your_contract {
 }
 ```
 
-You can check [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
+You can check [this section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
 
 
 ## Step 2: Set up your Storage
-It should add a `votes` field in your Storage. It should be named `votes` and have the type `votes::Data`.
-It stores information about delegations, [checkpoints]() for each account, which stores the number of votes at a certain time, and the total number of votes, also at a certain time.
-Also, Storage should have a `nonces` field. It should be named `nonces` and have the type `nonces::Data`.
-It stores the number of nonces for each account. Nonce is a number that is incremented each time a user delegates tokens to another account by signature.
+You need to add a storage field of type `votes::Data`, which will store the information about delegations, the number of votes at a certain time, and the total number of votes, at a certain time.
+Also, you will need a storage field of type `nonces::Data`, which stores the number of nonces for each account. Nonce is a number that is incremented each time a user delegates tokens to another account.
 ```rust
 #[ink(storage)]
 #[derive(Default, Storage)]
@@ -45,6 +43,6 @@ pub struct Contract {
     ...
 }
 ```
-That's it! Now we have a [PSP22Votes](/) contract. You can use it in your [Governor](../../governance/governor.md) contract, as a voting power.
+That's it! Now we have a [PSP22Votes](/) contract. You can use it in your [Governor](../../governance/governor.md) contract to count your votes.
 
 You can check an example of the usage of [PSP22Votes](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/psp22_extensions/votes) and [Governor](https://github.com/Brushfam/openbrush-contracts/tree/main/examples/governance/governor)

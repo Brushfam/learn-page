@@ -11,11 +11,10 @@ This page describes how to use [Nonces](/) in your contract.
 
 With [default `Cargo.toml`](../../overview.md/#the-default-toml-of-your-project-with-openbrush),
 you need to enable `Nonces` feature, embed modules data structures and implement them via `#[openbrush::implementation]` macro
-as described in [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush).
+as described in [this section](../../overview.md/#reuse-implementation-of-traits-from-openbrush).
 
 ## Step 2: Add Nonces field in your Storage
-Nonces field in your Storage should be named `nonces` and have type `nonces::Data`.
-It stores nonces Mapping, which stores the next unused nonce for each user.
+Add a storage field of type `governor_settings::Data`, which stores nonces Mapping, which stores the next unused nonce for each user.
 ```rust
 #[ink(storage)]
 #[derive(Default, Storage)]

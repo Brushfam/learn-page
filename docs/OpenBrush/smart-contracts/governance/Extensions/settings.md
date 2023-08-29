@@ -4,7 +4,7 @@ title: GovernorSettings
 ---
 This extension gives Governor contract the ability to set and get settings of the contract.
 With this extension, you can set and get voting delay(The time between proposing and vote starting),
-voting period, proposal threshold(The amount of votes that need to propose a proposal).
+voting period, proposal threshold(The amount of votes required to propose a proposal).
 Also, you can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance#GovernorSettings) in OpenZeppelin Contracts for more information about the settings mechanism.
 
 This page describes how to connect [GovernorSettings](/) to [Governor](../governor.md) contract.
@@ -21,7 +21,7 @@ pub mod your_contract {
     ...
 }
 ```
-You can check [that section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
+You can check [this section](../../overview.md/#reuse-implementation-of-traits-from-openbrush) to understand how it works.
 ## Step 2: Include GovernorSettings initialization in constructor
 
 We need to initialize [GovernorSettings](/) extension in the constructor of [Governor](../governor.md) contract.
@@ -46,15 +46,14 @@ impl Contract {
 }
 ```
 ## Step 3: Add GovernorSettings field in your Storage
-GovernorSettings field in your Storage should be named `settings` and have type `governor_settings::Data`.
-It stores the values of voting delay, voting period, proposal threshold.
+Add a storage field of type `governor_settings::Data`, which stores the values of voting delay, voting period, proposal threshold.
 ```rust
 #[ink(storage)]
 #[derive(Default, Storage)]
 pub struct Contract {
     ...
     #[storage_field]
-    governor_votes: governor_votes::Data,
+    settings: governor_settings::Data,
     ...
 }
 ```
