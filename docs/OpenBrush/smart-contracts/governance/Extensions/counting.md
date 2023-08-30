@@ -5,7 +5,7 @@ title: GovernorCounting
 This extension gives Governor contract the ability to manage and count votes of the contract.
 You can see if a user has voted for a proposal, and get the number of votes for a proposal.
 Also, this extension allows you to count your votes when you cast them, to see when the quorum is reached, and when the voting succeeds.
-You can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance#GovernorCountingSimple) in OpenZeppelin Contracts for more information about the counting mechanism.
+You can check the [Compound’s Governor Alpha & Bravo](https://docs.compound.finance/v2/governance/) documentation for more information about governance.
 
 This page describes how to connect [GovernorCounting](/) to [Governor](../governor.md) contract.
 

@@ -5,7 +5,7 @@ title: GovernorVotes
 This extension gives Governor contract the ability to communicate with [PSP22Votes](../../PSP22/Extensions/votes.md) token.
 The main purpose of this extension is to provide a way to check how much voting power a voter has.
 Also, it provides the ability to delegate tokens from one account to another for voting.
-You can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance#GovernorVotes) in OpenZeppelin Contracts for more information about the voting mechanism.
+You can check the [Compound’s Governor Alpha & Bravo](https://docs.compound.finance/v2/governance/) documentation for more information about governance.
 
 This page describes how to connect [Governor](../governor.md) with [PSP22Votes](../../PSP22/Extensions/votes.md) token using [GovernorVotes](/) extension.
 

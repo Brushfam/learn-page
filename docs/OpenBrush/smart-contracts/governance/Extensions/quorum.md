@@ -8,7 +8,7 @@ Quorum is calculated as `quorum_numerator * total_votes / quorum_denominator`.
 Of course, the value of total votes is not constant, it changes with every vote.
 So, the quorum calculates in specific moments of time. It is possible because all votes are stored in [checkpoints]() structure, 
 that is updated every time when a vote is created or changed.
-Also, you can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance#GovernorQuorumFraction) in OpenZeppelin Contracts for more information about the quorum calculation mechanism.
+You can check the [Compound’s Governor Alpha & Bravo](https://docs.compound.finance/v2/governance/) documentation for more information about governance.
 
 This page describes how to connect [GovernorQuorum](/) to [Governor](../governor.md) contract.
 

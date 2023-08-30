@@ -7,7 +7,7 @@ To cast a vote in [Governor](../../governance/governor.md) contract you need to 
 The more tokens you have, the more voting power you have. The extension implements the [Votes](https://github.com/Brushfam/openbrush-contracts/tree/main/contracts/src/governance/utils/votes) trait which provides the ability to delegate tokens from one account to another for voting,
 check the number of votes for a proposal, and check the number of votes delegated by a user.
 It's a required tool to create a [Governor](../../governance/governor.md) contract.
-Also, you can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#ERC20Votes) in OpenZeppelin Contracts for more information about the voting mechanism.
+You can check the [Compound’s Governor Alpha & Bravo](https://docs.compound.finance/v2/governance/) documentation for more information about governance.
 
 This page describes how to create your own [PSP22Votes](/) contract.
 ## Step 1: Import default implementation

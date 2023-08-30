@@ -6,8 +6,7 @@ This feature provides a governance mechanism. It allows token holders to vote on
 Everybody who has enough votes can create a proposal to call a method of some contract with some arguments. Then token holders can vote for or against the proposal.
 When the voting period ends, the proposal can be executed if the proposal status is `Succeeded` and the quorum is reached. 
 This example shows how you can use the implementation of [Governance](https://github.com/Brushfam/openbrush-contracts/tree/main/contracts/src/governance) token.  
-Also you can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance) in OpenZeppelin Contracts 
-for more information about the governance mechanism.
+You can check the [Compound’s Governor Alpha & Bravo](https://docs.compound.finance/v2/governance/) documentation for more information about governance.
 
 ## Step 1: Import default implementation
 

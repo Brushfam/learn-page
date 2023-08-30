@@ -5,7 +5,7 @@ title: GovernorSettings
 This extension gives Governor contract the ability to set and get settings of the contract.
 With this extension, you can set and get voting delay(The time between proposing and vote starting),
 voting period, proposal threshold(The amount of votes required to propose a proposal).
-Also, you can check the [documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance#GovernorSettings) in OpenZeppelin Contracts for more information about the settings mechanism.
+You can check the [Compound’s Governor Alpha & Bravo](https://docs.compound.finance/v2/governance/) documentation for more information about governance.
 
 This page describes how to connect [GovernorSettings](/) to [Governor](../governor.md) contract.
 
