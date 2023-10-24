@@ -48,7 +48,7 @@ export const MediumBlog = () => {
                                 <div className={"mediumBlock"}>
                                     <img
                                         src={item.thumbnail}
-                                        style={{ padding: 0 }}
+                                        style={{ padding: 0, maxHeight: 121 }}
                                         alt={item.title}
                                     />
                                     <div className={"descriptionBlock"}>
