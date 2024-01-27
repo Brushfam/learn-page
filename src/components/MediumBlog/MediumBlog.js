@@ -46,19 +46,12 @@ export const MediumBlog = () => {
                                 aria-label={item.title}
                             >
                                 <div className={"mediumBlock"}>
-                                    <img
-                                        src={item.thumbnail}
-                                        style={{ padding: 0, maxHeight: 121 }}
-                                        alt={item.title}
-                                    />
-                                    <div className={"descriptionBlock"}>
-                                        <p className={"articleTitle"}>
-                                            {item.title.replace("&amp;", "&")}
-                                        </p>
-                                        <p className={"articleDate"}>
-                                            {item.pubDate.slice(0, 10)}
-                                        </p>
-                                    </div>
+                                    <p className={"articleTitle"}>
+                                        {item.title.replace("&amp;", "&")}
+                                    </p>
+                                    <p className={"articleDate"}>
+                                        {item.pubDate.slice(0, 10)}
+                                    </p>
                                 </div>
                             </a>
                         </div>
